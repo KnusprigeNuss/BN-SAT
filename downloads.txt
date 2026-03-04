@@ -1,0 +1,4 @@
+pip install pgmpy matplotlib networkx
+
+sudo apt-get install graphviz graphviz-dev
+pip install pygraphviz
