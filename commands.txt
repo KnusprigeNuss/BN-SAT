@@ -1,0 +1,2 @@
+regular sharpSAT:
+./build/sharpSAT /mnt/c/Users/alexn/Desktop/BN-SAT/asia.cnf

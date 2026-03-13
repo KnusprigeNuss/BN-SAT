@@ -1,0 +1,145 @@
+--- NODE TO SAT VARIABLE MAPPING ---
+Node Name            | State Name      | SAT Var
+--------------------------------------------------
+HISTORY              | TRUE            | 1
+HISTORY              | FALSE           | 2
+--------------------------------------------------
+CVP                  | LOW             | 3
+CVP                  | NORMAL          | 4
+CVP                  | HIGH            | 5
+--------------------------------------------------
+PCWP                 | LOW             | 6
+PCWP                 | NORMAL          | 7
+PCWP                 | HIGH            | 8
+--------------------------------------------------
+HYPOVOLEMIA          | TRUE            | 9
+HYPOVOLEMIA          | FALSE           | 10
+--------------------------------------------------
+LVEDVOLUME           | LOW             | 11
+LVEDVOLUME           | NORMAL          | 12
+LVEDVOLUME           | HIGH            | 13
+--------------------------------------------------
+LVFAILURE            | TRUE            | 14
+LVFAILURE            | FALSE           | 15
+--------------------------------------------------
+STROKEVOLUME         | LOW             | 16
+STROKEVOLUME         | NORMAL          | 17
+STROKEVOLUME         | HIGH            | 18
+--------------------------------------------------
+ERRLOWOUTPUT         | TRUE            | 19
+ERRLOWOUTPUT         | FALSE           | 20
+--------------------------------------------------
+HRBP                 | LOW             | 21
+HRBP                 | NORMAL          | 22
+HRBP                 | HIGH            | 23
+--------------------------------------------------
+HREKG                | LOW             | 24
+HREKG                | NORMAL          | 25
+HREKG                | HIGH            | 26
+--------------------------------------------------
+ERRCAUTER            | TRUE            | 27
+ERRCAUTER            | FALSE           | 28
+--------------------------------------------------
+HRSAT                | LOW             | 29
+HRSAT                | NORMAL          | 30
+HRSAT                | HIGH            | 31
+--------------------------------------------------
+INSUFFANESTH         | TRUE            | 32
+INSUFFANESTH         | FALSE           | 33
+--------------------------------------------------
+ANAPHYLAXIS          | TRUE            | 34
+ANAPHYLAXIS          | FALSE           | 35
+--------------------------------------------------
+TPR                  | LOW             | 36
+TPR                  | NORMAL          | 37
+TPR                  | HIGH            | 38
+--------------------------------------------------
+EXPCO2               | ZERO            | 39
+EXPCO2               | LOW             | 40
+EXPCO2               | NORMAL          | 41
+EXPCO2               | HIGH            | 42
+--------------------------------------------------
+KINKEDTUBE           | TRUE            | 43
+KINKEDTUBE           | FALSE           | 44
+--------------------------------------------------
+MINVOL               | ZERO            | 45
+MINVOL               | LOW             | 46
+MINVOL               | NORMAL          | 47
+MINVOL               | HIGH            | 48
+--------------------------------------------------
+FIO2                 | LOW             | 49
+FIO2                 | NORMAL          | 50
+--------------------------------------------------
+PVSAT                | LOW             | 51
+PVSAT                | NORMAL          | 52
+PVSAT                | HIGH            | 53
+--------------------------------------------------
+SAO2                 | LOW             | 54
+SAO2                 | NORMAL          | 55
+SAO2                 | HIGH            | 56
+--------------------------------------------------
+PAP                  | LOW             | 57
+PAP                  | NORMAL          | 58
+PAP                  | HIGH            | 59
+--------------------------------------------------
+PULMEMBOLUS          | TRUE            | 60
+PULMEMBOLUS          | FALSE           | 61
+--------------------------------------------------
+SHUNT                | NORMAL          | 62
+SHUNT                | HIGH            | 63
+--------------------------------------------------
+INTUBATION           | NORMAL          | 64
+INTUBATION           | ESOPHAGEAL      | 65
+INTUBATION           | ONESIDED        | 66
+--------------------------------------------------
+PRESS                | ZERO            | 67
+PRESS                | LOW             | 68
+PRESS                | NORMAL          | 69
+PRESS                | HIGH            | 70
+--------------------------------------------------
+DISCONNECT           | TRUE            | 71
+DISCONNECT           | FALSE           | 72
+--------------------------------------------------
+MINVOLSET            | LOW             | 73
+MINVOLSET            | NORMAL          | 74
+MINVOLSET            | HIGH            | 75
+--------------------------------------------------
+VENTMACH             | ZERO            | 76
+VENTMACH             | LOW             | 77
+VENTMACH             | NORMAL          | 78
+VENTMACH             | HIGH            | 79
+--------------------------------------------------
+VENTTUBE             | ZERO            | 80
+VENTTUBE             | LOW             | 81
+VENTTUBE             | NORMAL          | 82
+VENTTUBE             | HIGH            | 83
+--------------------------------------------------
+VENTLUNG             | ZERO            | 84
+VENTLUNG             | LOW             | 85
+VENTLUNG             | NORMAL          | 86
+VENTLUNG             | HIGH            | 87
+--------------------------------------------------
+VENTALV              | ZERO            | 88
+VENTALV              | LOW             | 89
+VENTALV              | NORMAL          | 90
+VENTALV              | HIGH            | 91
+--------------------------------------------------
+ARTCO2               | LOW             | 92
+ARTCO2               | NORMAL          | 93
+ARTCO2               | HIGH            | 94
+--------------------------------------------------
+CATECHOL             | NORMAL          | 95
+CATECHOL             | HIGH            | 96
+--------------------------------------------------
+HR                   | LOW             | 97
+HR                   | NORMAL          | 98
+HR                   | HIGH            | 99
+--------------------------------------------------
+CO                   | LOW             | 100
+CO                   | NORMAL          | 101
+CO                   | HIGH            | 102
+--------------------------------------------------
+BP                   | LOW             | 103
+BP                   | NORMAL          | 104
+BP                   | HIGH            | 105
+--------------------------------------------------
