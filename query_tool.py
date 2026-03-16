@@ -76,14 +76,14 @@ def query_probability(evidence_list, query_node_var):
     
     create_wcnf_file("temp_res/temp_denom.wcnf", evidence_list)
     denom = run_wmc("temp_res/temp_denom.wcnf")
-    # print(f"Denominator result: {denom}")
+    print(f"Denominator result: {denom}")
     
     create_wcnf_file("temp_res/temp_num.wcnf", evidence_list + [query_node_var])
     num = run_wmc("temp_res/temp_num.wcnf")
     # print(f"Numerator result: {num}")
     
     if denom is not None and num is not None:
-        if denom == 0: return "P(Evidence) is 0 - logically impossible."
+        if denom == 0: return "ERROR"
         prob = (num / denom) * 100
         print(f"SUCCESS: P({query_node_var} | {evidence_list}) = {prob:.2f}%\n")
         return prob
@@ -92,7 +92,7 @@ def query_probability(evidence_list, query_node_var):
 
 
 
-query_probability([], 2)
+query_probability([5,7], 2)
 # query_probability([], 77)
 # query_probability([], 78)
 # query_probability([], 79)

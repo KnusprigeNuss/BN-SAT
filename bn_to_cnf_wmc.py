@@ -26,7 +26,7 @@ for node in model.nodes():
     # [1, 2, 3], like before
     clauses.append(state_vars)
     
-    # lock out combinations. [-1, -2], [-1, -3], [-2, -3]
+    # lock out combinations of two. [-1, -2], [-1, -3], [-2, -3]
     for pair in itertools.combinations(state_vars, 2):
         clauses.append([-pair[0], -pair[1]])
 
@@ -46,12 +46,14 @@ for cpd in model.get_cpds():
 
 
     for combination in state_combinations:
+        # combinations of parents and states with their SAT var. 
         parent_lits = [-mapping[p][s] for p, s in zip(parents, combination)]
         
-        parent_indices = [cpd.get_state_no(p, s) for p, s in zip(parents, combination)]
+        parent_state_indices = [cpd.get_state_no(p, s) for p, s in zip(parents, combination)]
         
-        for s_idx, state_name in enumerate(node_states):
-            prob = float(cpd.values[tuple([s_idx] + parent_indices)])
+        for state_idx, state_name in enumerate(node_states):
+            # fetch cpt value
+            prob = float(cpd.values[tuple([state_idx] + parent_state_indices)])
             
             # optimization?
             # if prob == 0:
@@ -64,8 +66,8 @@ for cpd in model.get_cpds():
             
             child_var = mapping[node][state_name]
             
+            # for debugging
             parent_ctx = ", ".join([f"{p}({s})" for p, s in zip(parents, combination)])
-            # weight_context[w_var] = f"Node: {node}({state_name}) | Parents: {parent_ctx if parents else 'None'}"
             node_info = f"{node}({state_name})"
             parent_info = parent_ctx if parents else "None"
             weight_context[w_var] = (node_info, parent_info)
@@ -76,9 +78,8 @@ for cpd in model.get_cpds():
             # backward: parent & child -> weight
             clauses.append(parent_lits + [-child_var, w_var])
 
-            # Weight -> Parents
-            # This forces the weight variable to be FALSE if any parent is 
-            # not in the required state for this CPT row.
+            # weight -> parents
+            # weight must be false if any parent is not in correct state according to CPT
             for p_lit in parent_lits:
                 clauses.append([-w_var, -p_lit])
 
