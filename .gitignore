@@ -2,4 +2,6 @@ venv_*/
 .vscode/
 temp_res/*
 tournament*
-ganak
+old/
+__*
+Masterarbeit*

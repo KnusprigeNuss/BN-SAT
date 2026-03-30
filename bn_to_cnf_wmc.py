@@ -1,16 +1,21 @@
 from IPython.display import Image
 from pgmpy.utils import get_example_model
 import itertools
+import json
+from pgmpy.readwrite import BIFReader
 
-MODEL = "alarm"
-model = get_example_model(MODEL)
+MODEL = "asia"
+# model = get_example_model(MODEL)
 mapping = {} 
 clauses = []
 weights = {} 
 var_count = 1
 DEBUG = True
-
 weight_context = {}
+
+
+reader = BIFReader(path="bif/asia.bif")
+model = reader.get_model()
 
 for node in model.nodes():
     cpd = model.get_cpds(node)
@@ -39,16 +44,18 @@ for cpd in model.get_cpds():
     # print(node_states)
 
     parent_state_lists = [cpd.state_names[p] for p in parents]
-    # print(parent_state_lists)
+    print(parent_state_lists)
     state_combinations = list(itertools.product(*parent_state_lists))
     # print(node)
-    # print(state_combinations)
+    print(state_combinations)
 
 
     for combination in state_combinations:
+        # print(cpd)
         # combinations of parents and states with their SAT var. 
         parent_lits = [-mapping[p][s] for p, s in zip(parents, combination)]
-        
+        print(parent_lits)
+
         parent_state_indices = [cpd.get_state_no(p, s) for p, s in zip(parents, combination)]
         
         for state_idx, state_name in enumerate(node_states):
@@ -125,11 +132,20 @@ def save_for_solver(clauses, weights, filename):
         for var, prob in weights.items():
             f.write(f"w {var} {prob:.15f}\n")
             # if weight not true the variable shouldnt change anything -> 1.0
-            # intead of 1-prob in binary
             f.write(f"w -{var} 1.0\n")
+    
+    data_bundle = {
+        "mapping": mapping,
+        "weights": weights,
+        "num_vars": num_vars,
+        "clauses": clauses
+    }
+    
+    with open(f"temp_res/{filename}_data.json", "w") as f:
+        json.dump(data_bundle, f)
 
 filename = MODEL
 save_for_solver(clauses, weights, filename)
-print(f"\nCreated files: '{filename}.cnf' and '{filename}.wmc' in temp_res")
+print(f"\nCreated files: '{filename}.cnf' and '{filename}.wmc' and '{filename}_data.json' in temp_res")
 
 

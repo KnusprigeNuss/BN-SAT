@@ -1,31 +1,13 @@
 from pgmpy.utils import get_example_model
 from pgmpy.inference import VariableElimination
 
-model = get_example_model('alarm')
+model = get_example_model('asia')
 inference = VariableElimination(model)
 
-result = inference.query(
-    variables=['HISTORY'], 
-    evidence={}
+evidence = {'tub':'yes', 'dysp':'no'}
+mpe_result = inference.map_query(
+    variables=[v for v in model.nodes() if v not in evidence],
+    evidence=evidence
 )
 
-print(result)
-
-# result = inference.query(
-#     variables=['INTUBATION'], 
-#     evidence={'SHUNT': 'NORMAL', 'PRESS': 'ZERO'}
-# )
-
-# print(result)
-
-# result = inference.query(
-#     variables=['VENTMACH'], 
-#     evidence={}
-# )
-
-# state_idx = model.get_cpds('VENTMACH').get_state_no('VENTMACH', 'NORMAL')
-# prob_normal = result.values[state_idx]
-
-# print(f"P(VENTMACH=NORMAL) = {prob_normal:.4f}")
-
-# print(result)
+print("pgmpy Exact MPE for Asia:", mpe_result)

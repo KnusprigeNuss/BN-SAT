@@ -1,3 +1,6 @@
+./ganak --mode 1 temp_res/asia_map.cnf 
+
+
 --- NODE TO SAT VARIABLE MAPPING ---
 Node Name            | State Name      | SAT Var
 --------------------------------------------------
