@@ -53,15 +53,16 @@ def create_wcnf_file(output_name, extra_clauses, m_name):
 def run_wmc(file_name):
     abs_file_path = os.path.abspath(file_name)
     solver_dir = os.path.dirname(os.path.expanduser("~/sharpsat-td-main/bin/sharpSAT"))
-    
+
     # from sharpsat repo
-    cmd = ["./sharpSAT", "-WE",  "-tmpdir", ".", "-prec", "10", abs_file_path]
+    cmd = ["./sharpSAT", "-WE", "-decot", "0.001",  "-tmpdir", ".", "-prec", "10", abs_file_path]
     # "-decot", "5",
     result = subprocess.run(cmd, capture_output=True, text=True, cwd=solver_dir)
 
     for line in result.stdout.split('\n'):
         if "exact arb float" in line:
-            return float(line.split()[-1])
+            res = float(line.split()[-1])
+            return res
     return None
 
 def query_probability_node_name(evidence_dict, query_node, query_state, mapping, m_name):
