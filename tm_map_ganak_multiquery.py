@@ -5,11 +5,11 @@ from pgmpy.utils import get_example_model
 import json
 
 MODEL_NAME = "asia"
-GANAK_PATH = "./ganak" 
+GANAK_PATH = "./solvers_bin/ganak" 
 TARGET_NODES = ['lung', 'bronc']
 EVIDENCE = {'tub': 'yes'}
 
-with open("temp_res/model_data.json", "r") as f:
+with open(f"temp_res/{MODEL_NAME}_data.json", "r") as f:
     data = json.load(f)
     mapping = data["mapping"]
     weights = data["weights"]
@@ -20,7 +20,6 @@ model = get_example_model(MODEL_NAME)
 
 
 def run_ganak_query(extra_clauses):
-    """Generates a temp CNF, runs Ganak, and returns the probability."""
     temp_file = "temp_res/map_query.cnf"
     
     with open(temp_file, "w") as f:

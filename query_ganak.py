@@ -6,7 +6,6 @@ GANAK_PATH = os.path.abspath("./solvers_bin/ganak")
 BASE_DIR = "temp_res"
 
 def create_wcnf_file(output_name, extra_clauses, m_name):
-    """Generates a CNF file using Ganak's specific 'cp weight' format."""
     with open(f"{BASE_DIR}/{m_name}.cnf", 'r') as f:
         lines = f.readlines()
     
@@ -48,8 +47,8 @@ def create_wcnf_file(output_name, extra_clauses, m_name):
             f.write(f"c p weight {i} {w_pos} 0\n")
             f.write(f"c p weight -{i} {w_neg} 0\n")
 
+
 def run_wmc(file_name):
-    """Executes Ganak in WMC mode and parses the result."""
     abs_file_path = os.path.abspath(file_name)
     
     cmd = [GANAK_PATH, "--mode", "1", abs_file_path]
@@ -61,8 +60,8 @@ def run_wmc(file_name):
             return float(line.split()[-1])
     return None
 
+
 def query_probability_ganak(evidence_dict, query_node, query_state, mapping, m_name):
-    """Calculates P(Q|E) using the Numerator/Denominator approach."""
     print(f"Ganak Query: P({query_node}={query_state} | {evidence_dict})")
     
     evidence_vars = [mapping[node][state] for node, state in evidence_dict.items()]
@@ -81,11 +80,28 @@ def query_probability_ganak(evidence_dict, query_node, query_state, mapping, m_n
         return prob
     return None
 
+
+def get_joint_wmc_ganak(assignment_dict, mapping, m_name):
+    assignment_vars = []
+    for node, state in assignment_dict.items():
+        if node in mapping and state in mapping[node]:
+            assignment_vars.append(mapping[node][state])
+        else:
+            print(f"Error: {node}={state} not found in mapping.")
+            return 0.0
+
+    temp_file = f"{BASE_DIR}/temp_map_ganak.cnf"
+    create_wcnf_file(temp_file, assignment_vars, m_name)
+    weight = run_wmc(temp_file)
+    
+    return weight if weight is not None else 0.0
+
+
 if __name__ == "__main__":
-    MODEL = "asia"
+    MODEL = "alarm"
     
     with open(f"temp_res/{MODEL}_data.json", "r") as f:
         data = json.load(f)
         mapping = data["mapping"]
 
-    query_probability_ganak({'tub': 'yes'}, 'dysp', 'yes', mapping, MODEL)
+    query_probability_ganak({'MINVOLSET': 'NORMAL'}, 'CO', 'LOW', mapping, MODEL)

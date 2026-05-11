@@ -3,58 +3,56 @@ import os
 import json
 
 def create_wcnf_file(output_name, extra_clauses, m_name):
-    with open(f"temp_res/{m_name}.cnf", 'r') as f:
+    cnf_path = f"temp_res/{m_name}.cnf"
+    if not os.path.exists(cnf_path):
+        print(f"ERROR: {cnf_path} not found.")
+        return False
+        
+    with open(cnf_path, 'r') as f:
         lines = f.readlines()
     
     num_vars = 0
     cnf_body = []
-    
     for line in lines:
         line = line.strip()
-        if not line:
-            continue
-            
+        if not line or line.startswith('c'): continue
         if line.startswith('p cnf'):
-            parts = line.split()
-            num_vars = int(parts[2])
-        elif not line.startswith('c'):
+            num_vars = int(line.split()[2])
+        else:
             cnf_body.append(line)
     
-    with open(f"temp_res/{m_name}.wmc", 'r') as f:
-        weights = {}
-        for line in f:
-            if line.startswith('w'):
-                parts = line.split()
-                weights[int(parts[1])] = parts[2]
-
-
-    # new wcnf file
-    num_clauses = len(cnf_body) + len(extra_clauses)
+    weights = {}
+    wmc_path = f"temp_res/{m_name}.wmc"
+    json_path = "temp_res/model_data.json"
     
+    if os.path.exists(wmc_path):
+        with open(wmc_path, 'r') as f:
+            for line in f:
+                if line.startswith('w'):
+                    parts = line.split()
+                    weights[int(parts[1])] = parts[2]
+    elif os.path.exists(json_path):
+        with open(json_path, 'r') as f:
+            data = json.load(f)
+            weights = {int(k): str(v) for k, v in data.get("weights", {}).items()}
+
+    num_clauses = len(cnf_body) + len(extra_clauses)
     with open(output_name, 'w') as f:
         f.write(f"p cnf {num_vars} {num_clauses}\n")
-        
-        for line in cnf_body:
-            f.write(f"{line}\n")
-            
-        # evidence list
-        for clause in extra_clauses:
-            f.write(f"{clause} 0\n")
-            
-        # weights
+        for line in cnf_body: f.write(f"{line}\n")
+        for var in extra_clauses: f.write(f"{var} 0\n")
         for i in range(1, num_vars + 1):
             w_pos = weights.get(i, "1.0")
             w_neg = weights.get(-i, "1.0")
             f.write(f"c p weight {i} {w_pos} 0\n")
             f.write(f"c p weight -{i} {w_neg} 0\n")
-
+    return True
 
 
 def run_wmc(file_name):
     abs_file_path = os.path.abspath(file_name)
     solver_dir = os.path.dirname(os.path.expanduser("~/sharpsat-td-main/bin/sharpSAT"))
 
-    # from sharpsat repo
     cmd = ["./sharpSAT", "-WE", "-decot", "0.001",  "-tmpdir", ".", "-prec", "10", abs_file_path]
     # "-decot", "5",
     result = subprocess.run(cmd, capture_output=True, text=True, cwd=solver_dir)
@@ -64,6 +62,7 @@ def run_wmc(file_name):
             res = float(line.split()[-1])
             return res
     return None
+
 
 def query_probability_node_name(evidence_dict, query_node, query_state, mapping, m_name):
     print(f"Starting query for P({query_node} = {query_state} | {evidence_dict})...")
@@ -122,11 +121,35 @@ def query_probability_node_int(evidence_list, query_node_var, m_name):
         print("ERROR: Check solver paths and input file formats.")
 
 
+def get_joint_wmc_node_name(assignment_dict, mapping, m_name):
+    assignment_vars = []
+    for node, state in assignment_dict.items():
+        if node in mapping and state in mapping[node]:
+            assignment_vars.append(mapping[node][state])
+        else:
+            print(f"Error: {node}={state} not found in mapping.")
+            return 0.0
+
+    temp_file = "temp_res/temp_map_query.wcnf"
+    if create_wcnf_file(temp_file, assignment_vars, m_name):
+        weight = run_wmc(temp_file)
+        return weight
+    return 0.0
+
+
 if __name__ == "__main__":
     MODEL = "asia"
     with open(f"temp_res/{MODEL}_data.json", "r") as f:
         data = json.load(f)
         mapping = data["mapping"]
 
-    query_probability_node_int([3], 15, MODEL)
-    query_probability_node_name({'tub': 'yes'}, 'dysp', 'yes', mapping, MODEL)
+    # query_probability_node_int([3], 15, MODEL)
+    query_probability_node_name({"bronc": "yes", "lung": "no"}, 'dysp', 'yes', mapping, MODEL)
+
+    # MODEL = "net_parents_5"
+    # with open(f"temp_res/{MODEL}_data.json", "r") as f:
+    #     data = json.load(f)
+    #     mapping = data["mapping"]
+
+    # # query_probability_node_int([3], 15, MODEL)
+    # query_probability_node_name({}, 'v2', 's1', mapping, MODEL)

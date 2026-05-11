@@ -5,3 +5,10 @@ tournament*
 old/
 __*
 Masterarbeit*
+bif/
+text*
+commands.txt
+synthetic_networks/
+solvers_bin/
+tmp_asia/
+temp_res/

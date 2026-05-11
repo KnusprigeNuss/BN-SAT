@@ -1,2 +1,33 @@
 regular sharpSAT:
 ./build/sharpSAT /mnt/c/Users/alexn/Desktop/BN-SAT/asia.cnf
+
+./solvers_bin/DPMC/bin/lg "./solvers_bin/DPMC/bin/flow_cutter_pace17 -p 100" < temp_res/asia_map.cnf | ./solvers_bin/DPMC/bin/dmc --cf=temp_res/asia_map.cnf --wc=1 --pc=1 --dp=c --er=1 --mf=2
+
+--pc=1 --dp=c --er=1 --mf=2
+c processing CNF formula...
+
+c procressing join tree...
+c getting join tree from stdin with 0s timer (end input with 'enter' then 'ctrl d')
+c processed join tree ending on line 23
+c joinTreeWidth                 32
+c plannerSeconds                0.00600202
+c getting join tree from stdin: done
+c killed planner process with pid 13544
+
+c computing output...
+c sliceWidth                    32
+c threadMaxMemMegabytes         4000
+c maxDiagramLeaves              17
+c maxDiagramNodes               355
+c ------------------------------------------------------------------
+s SATISFIABLE
+c s type pmc
+c s log10-estimate -0.53706
+c s exact double prec-sci 0.290362
+c ------------------------------------------------------------------
+v 1 2 3 4 5 6 -7 8 -9 10 11 12 13 14 15 16 -17 18 -19 -20 -21 22 -23 -24 -25 -26 -27 -28 -29 30 -31 -32 -33 -34 -35 -36 -37 38 -39 -40 -41 42 -43 44 -45 -46 -47 48 -49 -50 -51 52
+c seconds                       0.045
+
+
+
+./solvers_bin/DPMC/bin/lg "./solvers_bin/DPMC/bin/flow_cutter_pace17 -p 100" < temp_res/asia_map.cnf | ./solvers_bin/DPMC/bin/dmc --cf=temp_res/asia_map.cnf --wc=1 --pc=1 --dp=c --er=1 --mf=2
