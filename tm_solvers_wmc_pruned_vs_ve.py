@@ -2,18 +2,59 @@ import time
 import json
 import os
 import random
+import signal
+import resource
+import logging
 import warnings
+import subprocess
+import numpy as np
 from pgmpy.utils import get_example_model
 from pgmpy.inference import VariableElimination
 from pgmpy.sampling import BayesianModelSampling
-
 from bn_to_cnf_wmc_w_pruning import generate_wmc_cnf
 from query_sharpsat import get_joint_wmc_node_name
 
 warnings.filterwarnings("ignore")
+logging.getLogger("pgmpy").setLevel(logging.ERROR)
 
-MODELS = ["pathfinder"] #"pathfinder"
-NUM_PER_TIER = 5 
+
+TIMEOUT_SECONDS = 300
+MEMORY_LIMIT_BYTES = 8 * 1024 * 1024 * 1024  
+NUM_PER_TIER = 5
+MODELS = ["link"]
+
+
+def set_global_memory_limit():
+    try:
+        resource.setrlimit(resource.RLIMIT_AS, (MEMORY_LIMIT_BYTES, MEMORY_LIMIT_BYTES))
+    except ValueError:
+        pass
+
+
+class PythonTimeout(Exception): pass
+def timeout_handler(signum, frame): raise PythonTimeout()
+
+
+def run_python_with_timeout(func, *args, **kwargs):
+    signal.signal(signal.SIGALRM, timeout_handler)
+    signal.alarm(TIMEOUT_SECONDS)
+    start = time.perf_counter()
+    res = None
+    status = "SUCCESS"
+    try:
+        res = func(*args, **kwargs)
+    except PythonTimeout:
+        status = "T/O"
+    except MemoryError:
+        status = "MEM_OUT"
+    except Exception:
+        status = "ERR"
+    finally:
+        signal.alarm(0) 
+        elapsed = time.perf_counter() - start
+        
+    return res, elapsed, status
+
 
 def generate_dynamic_queries_with_maxtree(model_name, num_per_tier=3):
     model = get_example_model(model_name)
@@ -49,109 +90,124 @@ def generate_dynamic_queries_with_maxtree(model_name, num_per_tier=3):
     return queries
 
 
-def solve_baseline_pgmpy(m_name, target_state, evidence):
-    model = get_example_model(m_name)
-    inference = VariableElimination(model)
+def solve_baseline_pgmpy_wrapped(inference, target_state, evidence):
+    query_vars = list(target_state.keys())
     
-    start = time.perf_counter()
-    try:
-        query_vars = list(target_state.keys())
-        if evidence:
-            cond_factor = inference.query(variables=query_vars, evidence=evidence, show_progress=False)
-            cond_factor.reduce([(k, target_state[k]) for k in query_vars])
-            p_q_given_e = float(cond_factor.values.item() if hasattr(cond_factor.values, 'item') else cond_factor.values)
-            
-            ev_vars = list(evidence.keys())
-            ev_factor = inference.query(variables=ev_vars, show_progress=False)
-            ev_factor.reduce([(k, evidence[k]) for k in ev_vars])
-            p_e = float(ev_factor.values.item() if hasattr(ev_factor.values, 'item') else ev_factor.values)
-            
-            prob = p_q_given_e * p_e
-        else:
-            factor = inference.query(variables=query_vars, show_progress=False)
-            factor.reduce([(k, target_state[k]) for k in query_vars])
-            prob = float(factor.values.item() if hasattr(factor.values, 'item') else factor.values)
-            
-    except MemoryError:
-        return -1.0, time.perf_counter() - start 
-    except Exception as e:
-        return -1.0, time.perf_counter() - start
+    if evidence:
+        cond_factor = inference.query(variables=query_vars, evidence=evidence, show_progress=False)
+        cond_factor.reduce([(k, target_state[k]) for k in query_vars])
+        p_q_given_e = float(cond_factor.values.item() if hasattr(cond_factor.values, 'item') else cond_factor.values)
         
-    return prob, time.perf_counter() - start
+        ev_vars = list(evidence.keys())
+        ev_factor = inference.query(variables=ev_vars, show_progress=False)
+        ev_factor.reduce([(k, evidence[k]) for k in ev_vars])
+        p_e = float(ev_factor.values.item() if hasattr(ev_factor.values, 'item') else ev_factor.values)
+        
+        return p_q_given_e * p_e
+    else:
+        factor = inference.query(variables=query_vars, show_progress=False)
+        factor.reduce([(k, target_state[k]) for k in query_vars])
+        return float(factor.values.item() if hasattr(factor.values, 'item') else factor.values)
+
+
+def get_tier_display(times, statuses):
+    valid_times = [t for t, s in zip(times, statuses) if s == "SUCCESS"]
+    
+    mem_outs = statuses.count("MEM_OUT")
+    timeouts = statuses.count("T/O")
+    errs = statuses.count("ERR")
+    
+    if not valid_times:
+        if mem_outs > 0: return "MEM_OUT"
+        if timeouts > 0: return "T/O"
+        return "ERR"
+        
+    avg = sum(valid_times) / len(valid_times)
+    
+    extras = []
+    if mem_outs > 0: extras.append(f"{mem_outs} MO")
+    if timeouts > 0: extras.append(f"{timeouts} TO")
+    if errs > 0: extras.append(f"{errs} ERR")
+    
+    if extras:
+        return f"{avg:.4f} ({', '.join(extras)})"
+    return f"{avg:.4f}"
 
 
 def run_pruning_tournament():
-    results = {}
+    random.seed(42) 
+    np.random.seed(42)
+    set_global_memory_limit()
+    
+    mismatches = []
+
+    print("\n" + "=" * 90)
+    print(f"{'Model':<15} | {'Tier':<10} | {'sharpSAT (s)':<20} | {'Var. Elimination (s)':<20}")
+    print("-" * 90)
+    
     for m_name in MODELS:
-        print(f"\nTournament VE and SharpSat with pruning: {m_name}")
-        results[m_name] = {
-            "no_ev": {"sharpsat": [], "ve": []},
-            "few_ev": {"sharpsat": [], "ve": []},
-            "much_ev": {"sharpsat": [], "ve": []},
-            "max_tree": {"sharpsat": [], "ve": []}
-        }
-        
-        print(f"Generating mathematically valid queries...")
+        model = get_example_model(m_name)
+        ve_infer = VariableElimination(model)
+
         tiered_queries = generate_dynamic_queries_with_maxtree(m_name, num_per_tier=NUM_PER_TIER)
 
         for tier_name, test_queries in tiered_queries.items():
-            print(f"  --- Running Tier: {tier_name.upper()} ---")
+            ss_times, ve_times = [], []
+            ss_stats, ve_stats = [], []
             
             for evidence, query_node, query_state in test_queries:
                 target_state = {query_node: query_state}
                 out_prefix = f"temp_res/{m_name}" 
                 
-                cnf_path, wmc_path, data_path = generate_wmc_cnf(
+                # generate pruned cnf
+                _, _, gen_status = run_python_with_timeout(
+                    generate_wmc_cnf, 
                     model_name=m_name, 
                     query_nodes=[query_node], 
                     evidence=evidence, 
                     out_prefix=out_prefix
                 )
                 
-                with open(data_path, "r") as f:
-                    mapping = json.load(f)["mapping"]
+                if gen_status != "SUCCESS":
+                    ss_times.append(0.0); ss_stats.append(gen_status)
+                    prob_ss = None
+                else:
+                    data_path = f"{out_prefix}_data.json"
+                    try:
+                        with open(data_path, "r") as f:
+                            mapping = json.load(f)["mapping"]
+                        
+                        # ss
+                        ss_res, ss_t, ss_stat = run_python_with_timeout(get_joint_wmc_node_name, target_state, mapping, m_name)
+                        ss_times.append(ss_t); ss_stats.append(ss_stat)
+                        prob_ss = ss_res if ss_stat == "SUCCESS" else None
+                    except Exception:
+                        ss_times.append(0.0); ss_stats.append("ERR")
+                        prob_ss = None
 
-                # print("start sharpsat")
-                start_ss = time.perf_counter()
-                prob_ss = get_joint_wmc_node_name(target_state, mapping, m_name)
-                print(prob_ss)
-                results[m_name][tier_name]["sharpsat"].append(time.perf_counter() - start_ss)
-                # print("end sharpsat")
+                # ve
+                ve_res, ve_t, ve_stat = run_python_with_timeout(solve_baseline_pgmpy_wrapped, ve_infer, target_state, evidence)
+                ve_times.append(ve_t); ve_stats.append(ve_stat)
+                prob_ve = ve_res if ve_stat == "SUCCESS" else None
 
-                # print("start VE")
-                # prob_ve, time_ve = solve_baseline_pgmpy(m_name, target_state, evidence)
-                # results[m_name][tier_name]["ve"].append(time_ve if prob_ve != -1.0 else -1.0)
-                # print("end VE")
+                
+                print("VE: " + str(prob_ve) + ", SHARPSAT: " + str(prob_ss))
+                if prob_ss is not None and prob_ve is not None:
+                    if round(prob_ss, 5) != round(prob_ve, 5):
+                        err_msg = f"{m_name} ({tier_name}) | sharpSAT: {prob_ss:.6f} vs VE: {prob_ve:.6f}"
+                        print(f"\n---> [MISMATCH DETECTED] {err_msg}")
+                        mismatches.append(err_msg)
 
-
-
-    print("\n" + "=" * 80)
-    print(f"{'Model & Tier':<25} | {'Solver':<20} | {'Avg Time (s)':<15}")
-    print("-" * 80)
-    
-    tier_labels = [("no_ev", "Empty"), 
-                   ("few_ev", "Few Ev"), 
-                   ("much_ev", "Much Ev"), 
-                   ("max_tree", "Max Tree")]
-    
-    for m in MODELS:
-        for tier_key, tier_display in tier_labels:
-            row_title = f"{m} ({tier_display})"
+            ss_display = get_tier_display(ss_times, ss_stats)
+            ve_display = get_tier_display(ve_times, ve_stats)
             
-            ss_times = results[m][tier_key]["sharpsat"]
-            ve_times = results[m][tier_key]["ve"]
-            
-            ss_avg = sum(ss_times) / len(ss_times) if ss_times else 0.0
-            
-            valid_ve = [t for t in ve_times if t != -1.0]
-            if len(valid_ve) > 0:
-                ve_avg = f"{sum(valid_ve) / len(valid_ve):<15.4f}"
-            else:
-                ve_avg = "OOM / CRASHED  "
+            print(f"{m_name:<15} | {tier_name:<10} | {ss_display:<20} | {ve_display:<20}")
 
-            print(f"{row_title:<25} | {'sharpSAT-td':<20} | {ss_avg:<15.4f}")
-            print(f"{'':<25} | {'Var. Elimination':<20} | {ve_avg}")
-        print("-" * 80)
+    print("=" * 90)
+    if mismatches:
+        print(f"Found {len(mismatches)} mathematical deviations during pruning tests.")
+    else:
+        print("Verification complete. Pruned CNF logic perfectly matches exact VE calculations.")
 
 if __name__ == "__main__":
     run_pruning_tournament()

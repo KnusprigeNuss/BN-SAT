@@ -22,14 +22,14 @@ def generate_map_cnf(model_name, map_nodes, evidence=None, out_prefix=None):
     out_prefix = out_prefix or f"temp_res/{model_name}_map"
     os.makedirs(os.path.dirname(out_prefix), exist_ok=True)
     
-    print(f"Generator Building {model_name} with Evidence: {evidence}")
+    # print(f"Generator Building {model_name} with Evidence: {evidence}")
 
     model = get_example_model(model_name)
 
     # here happens the pruning, can be deactivated if needed ########
     original_size = len(model.nodes())
     model = prune_barren_nodes(model, map_nodes, evidence)
-    print(f"Pruned Barren Nodes: Reduced from {original_size} to {len(model.nodes())} nodes.")
+    # print(f"Pruned Barren Nodes: Reduced from {original_size} to {len(model.nodes())} nodes.")
     #########################################################
 
     mapping = {} 
@@ -107,7 +107,7 @@ def generate_map_cnf(model_name, map_nodes, evidence=None, out_prefix=None):
         if node in mapping:
             map_sat_vars.extend(mapping[node].values())
             
-    print(f"Projecting onto {len(map_sat_vars)} target variables.")
+    # print(f"Projecting onto {len(map_sat_vars)} target variables.")
 
     # cnf
     cnf_file = f"{out_prefix}.cnf"
@@ -129,7 +129,8 @@ def generate_map_cnf(model_name, map_nodes, evidence=None, out_prefix=None):
         "weights": weights,
         "num_vars": num_vars,
         "evidence": evidence,
-        "map_nodes": map_nodes
+        "map_nodes": map_nodes,
+        "clauses": clauses
     }
     
     json_file = f"{out_prefix}_data.json"

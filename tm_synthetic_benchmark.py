@@ -16,7 +16,7 @@ def run_sharpsat_td(file_name):
     
     start_time = time.perf_counter()
     try:
-        result = subprocess.run(cmd, capture_output=True, text=True, cwd=solver_dir, timeout=120)
+        result = subprocess.run(cmd, capture_output=True, text=True, cwd=solver_dir, timeout=600)
         solve_time = time.perf_counter() - start_time
         
         if "exact arb float" in result.stdout:
@@ -93,9 +93,9 @@ def plot_dual_axis(ax, title, xlabel, x_time, y_time, x_cl, y_cl):
 
 
 def run_benchmarks():
-    node_counts = [10, 20, 50, 70, 90, 95, 100]
-    parent_counts = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-    state_counts = [2, 3, 4, 5, 6, 7, 8]
+    node_counts = [105, 110]
+    parent_counts = [10]
+    state_counts = [2, 3, 4, 5, 6, 7]
 
     res_nodes = benchmark_category("Nodes", node_counts, "net_nodes_{}.bif")
     res_parents = benchmark_category("Max Parents (Treewidth)", parent_counts, "net_parents_{}.bif")

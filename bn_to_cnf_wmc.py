@@ -106,11 +106,12 @@ def generate_wmc_cnf(model, model_name, debug=True):
             prob_val = weights[w_var]
             print(f"{w_var:<12} | {prob_val:<8.4f} | {node_info:<30} | {parent_info}")
 
-    print(f"Generated {len(clauses)} clauses.")
-    print(f"Used {var_count-1} variables with {var_count-1-len(weights)} being variables for node states and {len(weights)} variables being weight variables.")
+        print(f"Generated {len(clauses)} clauses.")
+        print(f"Used {var_count-1} variables with {var_count-1-len(weights)} being variables for node states and {len(weights)} variables being weight variables.")
 
     save_for_solver(clauses, weights, model_name, mapping)
-    print(f"Created files: '{model_name}.cnf', '{model_name}.wmc', and '{model_name}_data.json'")
+    if debug:
+        print(f"Created files: '{model_name}.cnf', '{model_name}.wmc', and '{model_name}_data.json'")
 
 
 
@@ -119,7 +120,7 @@ def save_for_solver(clauses, weights, filename, mapping):
     num_vars = max(all_vars + list(weights.keys()))
     num_clauses = len(clauses)
     
-    print(f"Writing {num_clauses} clauses and {num_vars} variables to {filename}.cnf")
+    # print(f"Writing {num_clauses} clauses and {num_vars} variables to {filename}.cnf")
     
     # write cnf in dimacs format
     with open(f"temp_res/{filename}.cnf", "w") as f:
@@ -148,10 +149,59 @@ def save_for_solver(clauses, weights, filename, mapping):
 # save_for_solver(clauses, weights, filename)
 # print(f"\nCreated files: '{filename}.cnf' and '{filename}.wmc' and '{filename}_data.json' in temp_res")
 
-
+# MODELS = ["cancer", "earthquake", "asia", "sachs", "child", "insurance", "alarm", "hepar2", "hailfinder", "win95pts"]
 if __name__ == "__main__":
     MODEL_NAME = "alarm"
     test_model = get_example_model(MODEL_NAME)
-    
-    generate_wmc_cnf(test_model, MODEL_NAME, debug=True)
-    print("\nTest completed successfully!")
+    generate_wmc_cnf(test_model, MODEL_NAME, debug=False)
+    print(f"\nTest {MODEL_NAME} completed successfully!")
+
+    MODEL_NAME = "child"
+    test_model = get_example_model(MODEL_NAME)
+    generate_wmc_cnf(test_model, MODEL_NAME, debug=False)
+    print(f"\nTest {MODEL_NAME} completed successfully!")
+
+    MODEL_NAME = "water"
+    test_model = get_example_model(MODEL_NAME)
+    generate_wmc_cnf(test_model, MODEL_NAME, debug=False)
+    print(f"\nTest {MODEL_NAME} completed successfully!")
+
+    MODEL_NAME = "barley"
+    test_model = get_example_model(MODEL_NAME)
+    generate_wmc_cnf(test_model, MODEL_NAME, debug=False)
+    print(f"\nTest {MODEL_NAME} completed successfully!")
+
+    MODEL_NAME = "hailfinder"
+    test_model = get_example_model(MODEL_NAME)
+    generate_wmc_cnf(test_model, MODEL_NAME, debug=False)
+    print(f"\nTest {MODEL_NAME} completed successfully!")
+
+    MODEL_NAME = "win95pts"
+    test_model = get_example_model(MODEL_NAME)
+    generate_wmc_cnf(test_model, MODEL_NAME, debug=False)
+    print(f"\nTest {MODEL_NAME} completed successfully!")
+
+    MODEL_NAME = "andes"
+    test_model = get_example_model(MODEL_NAME)
+    generate_wmc_cnf(test_model, MODEL_NAME, debug=False)
+    print(f"\nTest {MODEL_NAME} completed successfully!")
+
+    MODEL_NAME = "link"
+    test_model = get_example_model(MODEL_NAME)
+    generate_wmc_cnf(test_model, MODEL_NAME, debug=False)
+    print(f"\nTest {MODEL_NAME} completed successfully!")
+
+    MODEL_NAME = "pathfinder"
+    test_model = get_example_model(MODEL_NAME)
+    generate_wmc_cnf(test_model, MODEL_NAME, debug=False)
+    print(f"\nTest {MODEL_NAME} completed successfully!")
+
+    MODEL_NAME = "munin2"
+    test_model = get_example_model(MODEL_NAME)
+    generate_wmc_cnf(test_model, MODEL_NAME, debug=False)
+    print(f"\nTest {MODEL_NAME} completed successfully!")
+
+    MODEL_NAME = "munin"
+    test_model = get_example_model(MODEL_NAME)
+    generate_wmc_cnf(test_model, MODEL_NAME, debug=False)
+    print(f"\nTest {MODEL_NAME} completed successfully!")

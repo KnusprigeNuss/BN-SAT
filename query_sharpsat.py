@@ -1,6 +1,15 @@
 import subprocess
 import os
 import json
+import resource
+
+def limit_memory():
+    try:
+        limit = 8 * 1024 * 1024 * 1024
+        resource.setrlimit(resource.RLIMIT_AS, (limit, limit))
+    except ValueError:
+        pass
+
 
 def create_wcnf_file(output_name, extra_clauses, m_name):
     cnf_path = f"temp_res/{m_name}.cnf"
@@ -23,7 +32,10 @@ def create_wcnf_file(output_name, extra_clauses, m_name):
     
     weights = {}
     wmc_path = f"temp_res/{m_name}.wmc"
+    # maybe better like that
+    # json_path = f"temp_res/{m_name}_data.json"
     json_path = "temp_res/model_data.json"
+
     
     if os.path.exists(wmc_path):
         with open(wmc_path, 'r') as f:
@@ -55,7 +67,7 @@ def run_wmc(file_name):
 
     cmd = ["./sharpSAT", "-WE", "-decot", "0.001",  "-tmpdir", ".", "-prec", "10", abs_file_path]
     # "-decot", "5",
-    result = subprocess.run(cmd, capture_output=True, text=True, cwd=solver_dir)
+    result = subprocess.run(cmd, capture_output=True, text=True, cwd=solver_dir, timeout=300, preexec_fn=limit_memory)
 
     for line in result.stdout.split('\n'):
         if "exact arb float" in line:
@@ -65,7 +77,7 @@ def run_wmc(file_name):
 
 
 def query_probability_node_name(evidence_dict, query_node, query_state, mapping, m_name):
-    print(f"Starting query for P({query_node} = {query_state} | {evidence_dict})...")
+    # print(f"Starting query for P({query_node} = {query_state} | {evidence_dict})...")
     
     evidence_vars = []
     for node, state in evidence_dict.items():
@@ -94,7 +106,7 @@ def query_probability_node_name(evidence_dict, query_node, query_state, mapping,
             print("Probability is 0 (Impossible evidence).")
             return 0.0
         prob = (num / denom) * 100
-        print(f"SUCCESS: P({query_node}={query_state} | {evidence_dict}) = {prob:.2f}%\n")
+        # print(f"SUCCESS: P({query_node}={query_state} | {evidence_dict}) = {prob:.2f}%\n")
         return prob
     else:
         print("ERROR: Solver failed to return a result.")
@@ -102,7 +114,7 @@ def query_probability_node_name(evidence_dict, query_node, query_state, mapping,
 
  
 def query_probability_node_int(evidence_list, query_node_var, m_name):
-    print(f"Starting query for P({query_node_var} | {evidence_list})...")
+    # print(f"Starting query for P({query_node_var} | {evidence_list})...")
     
     create_wcnf_file("temp_res/temp_denom.wcnf", evidence_list, m_name)
     denom = run_wmc("temp_res/temp_denom.wcnf")
@@ -115,7 +127,7 @@ def query_probability_node_int(evidence_list, query_node_var, m_name):
     if denom is not None and num is not None:
         if denom == 0: return "ERROR"
         prob = (num / denom) * 100
-        print(f"SUCCESS: P({query_node_var} | {evidence_list}) = {prob:.2f}%\n")
+        # print(f"SUCCESS: P({query_node_var} | {evidence_list}) = {prob:.2f}%\n")
         return prob
     else:
         print("ERROR: Check solver paths and input file formats.")

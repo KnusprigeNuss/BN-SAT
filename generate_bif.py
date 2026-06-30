@@ -52,11 +52,11 @@ if __name__ == "__main__":
     if not os.path.exists("synthetic_networks"):
         os.makedirs("synthetic_networks")
 
-    for n in [10, 20, 50, 70, 90, 100]:
+    for n in [10, 20, 30, 50, 70, 90, 100, 105, 110]:
         generate_random_bif(f"synthetic_networks/net_nodes_{n}.bif", num_nodes=n, max_parents=2, states_per_node=2)
 
     for p in [1, 2, 3, 4, 5, 6, 7, 8, 9]:
         generate_random_bif(f"synthetic_networks/net_parents_{p}.bif", num_nodes=30, max_parents=p, states_per_node=2, edge_prob=0.8)
 
-    for s in [2, 3, 4, 5, 6, 7, 8, 9, 10, 11]:
+    for s in [2, 3, 4, 5, 6, 7]:
         generate_random_bif(f"synthetic_networks/net_states_{s}.bif", num_nodes=30, max_parents=2, states_per_node=s)

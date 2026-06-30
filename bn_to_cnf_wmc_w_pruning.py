@@ -26,13 +26,13 @@ def generate_wmc_cnf(model_name, query_nodes, evidence=None, out_prefix=None):
     out_prefix = out_prefix or f"temp_res/{model_name}_query"
     os.makedirs(os.path.dirname(out_prefix), exist_ok=True)
     
-    print(f"Building '{model_name}' for Query: {query_nodes} | Evidence: {evidence}")
+    # print(f"Building '{model_name}' for Query: {query_nodes} | Evidence: {evidence}")
 
     model = get_example_model(model_name)
     original_size = len(model.nodes())
     
     model = get_pruned_model(model, query_nodes, evidence)
-    print(f"Pruned Barren Nodes: Reduced from {original_size} to {len(model.nodes())} nodes.")
+    # print(f"Pruned Barren Nodes: Reduced from {original_size} to {len(model.nodes())} nodes.")
 
     mapping = {} 
     clauses = []

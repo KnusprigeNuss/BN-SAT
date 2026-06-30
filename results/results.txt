@@ -1,0 +1,735 @@
+TM SOLVERS:
+
+========================================================================================================================
+Model           | Tier       | sharpSAT (s)    | Ganak (s)       | d4 Eval (s)     | d4 Comp (s)    
+------------------------------------------------------------------------------------------------------------------------
+asia            | no_ev      | 0.0553          | 0.7548          | 0.0018          | 0.0810         
+asia            | few_ev     | 0.0506          | 0.3531          | 0.0017          | 0.0810         
+asia            | much_ev    | 0.0503          | 0.0947          | 0.0018          | 0.0810         
+cancer          | no_ev      | 0.0521          | 0.0975          | 0.0014          | 0.0794         
+cancer          | few_ev     | 0.0552          | 0.0949          | 0.0015          | 0.0794         
+cancer          | much_ev    | 0.0502          | 0.0931          | 0.0015          | 0.0794         
+sachs           | no_ev      | 0.0871          | 4.1653          | 0.0068          | 0.1313         
+sachs           | few_ev     | 0.0791          | 3.3061          | 0.0071          | 0.1313         
+sachs           | much_ev    | 0.0685          | 1.4521          | 0.0068          | 0.1313         
+alarm           | no_ev      | 0.5276          | 16.9175         | 1.0674          | 1.1827         
+alarm           | few_ev     | 0.2134          | 11.9867         | 1.0062          | 1.1827         
+alarm           | much_ev    | 0.0890          | 3.9222          | 1.0575          | 1.1827         
+child           | no_ev      | 0.0895          | 4.8524          | 0.1753          | 0.4308         
+child           | few_ev     | 0.0790          | 3.4623          | 0.2339          | 0.4308         
+child           | much_ev    | 0.0665          | 1.5366          | 0.1863          | 0.4308         
+water           | no_ev      | 3.3207          | 48.3594         | ERR             | TIMEOUT        
+water           | few_ev     | 1.7959          | 30.2876         | ERR             | TIMEOUT        
+water           | much_ev    | 0.4405          | 4.0537          | ERR             | TIMEOUT        
+barley          | no_ev      | T/O             | T/O             | ERR             | TIMEOUT        
+barley          | few_ev     | T/O             | T/O             | ERR             | TIMEOUT        
+barley          | much_ev    | 168.3987        | T/O             | ERR             | TIMEOUT        
+hailfinder      | no_ev      | 6.8104          | 73.1982         | ERR             | 23.9191        
+hailfinder      | few_ev     | 1.1922          | 38.7662         | ERR             | 23.9191        
+hailfinder      | much_ev    | 0.2102          | 7.1613          | ERR             | 23.9191        
+win95pts        | no_ev      | 0.7504          | 19.2038         | 14.5568         | 3.8389         
+win95pts        | few_ev     | 0.4127          | 11.0401         | 14.8640         | 3.8389         
+win95pts        | much_ev    | 0.1216          | 2.5383          | 14.5704         | 3.8389         
+andes           | no_ev      | T/O             | T/O             | ERR             | TIMEOUT        
+andes           | few_ev     | T/O             | 34.0987         | ERR             | TIMEOUT        
+andes           | much_ev    | 0.2649          | 9.9349          | ERR             | TIMEOUT        
+link            | no_ev      | T/O             | T/O             | ERR             | TIMEOUT        
+link            | few_ev     | T/O             | 33.5755         | ERR             | TIMEOUT        
+link            | much_ev    | 0.6300          | 4.2143          | ERR             | TIMEOUT        
+pathfinder      | no_ev      | T/O             | T/O             | ERR             | TIMEOUT        
+pathfinder      | few_ev     | 90.6186         | T/O             | ERR             | TIMEOUT        
+pathfinder      | much_ev    | 2.5324          | 12.7643         | ERR             | TIMEOUT        
+munin2          | no_ev      | T/O             | T/O             | ERR             | TIMEOUT        
+munin2          | few_ev     | T/O             | 153.8766        | ERR             | TIMEOUT        
+munin2          | much_ev    | 3.1963          | 64.6946         | ERR             | TIMEOUT        
+munin           | no_ev      | T/O             | T/O             | ERR             | TIMEOUT        
+munin           | few_ev     | T/O             | 178.6470        | ERR             | TIMEOUT        
+munin           | much_ev    | 3.0322          | 44.9326         | ERR             | TIMEOUT 
+
+
+
+5 minuten
+========================================================================================================================
+Model           | Tier       | sharpSAT (s)    | Ganak (s)       | d4 Eval (s)     | d4 Comp (s)    
+------------------------------------------------------------------------------------------------------------------------
+andes           | no_ev      | T/O             | T/O             | ERR             | TIMEOUT        
+andes           | few_ev     | T/O             | 56.4863         | ERR             | TIMEOUT        
+andes           | much_ev    | 0.4591          | 15.6413         | ERR             | TIMEOUT        
+link            | no_ev      | T/O             | T/O             | ERR             | TIMEOUT        
+link            | few_ev     | T/O             | 46.6504         | ERR             | TIMEOUT        
+link            | much_ev    | 0.5987          | 4.7303          | ERR             | TIMEOUT        
+pathfinder      | no_ev      | T/O             | T/O             | ERR             | TIMEOUT        
+pathfinder      | few_ev     | 32.0140         | 95.0851         | ERR             | TIMEOUT        
+pathfinder      | much_ev    | 11.4506         | 51.5382         | ERR             | TIMEOUT        
+munin2          | no_ev      | T/O             | T/O             | ERR             | TIMEOUT        
+munin2          | few_ev     | T/O             | 164.1160        | ERR             | TIMEOUT        
+munin2          | much_ev    | 2.6571          | 45.3407         | ERR             | TIMEOUT        
+munin           | no_ev      | T/O             | T/O             | ERR             | TIMEOUT        
+munin           | few_ev     | 35.1618         | 216.5882        | ERR             | TIMEOUT        
+munin           | much_ev    | 3.9793          | 60.7717         | ERR             | TIMEOUT    
+
+
+
+
+TM solvers RERUN:
+========================================================================================================================
+Model           | Tier       | sharpSAT (s)    | Ganak (s)       | d4 Eval (s)     | d4 Comp (s)    
+------------------------------------------------------------------------------------------------------------------------
+asia            | no_ev      | 0.0656          | 0.7780          | 0.0018          | 0.0922         
+asia            | few_ev     | 0.0634          | 0.4911          | 0.0019          | 0.0922         
+asia            | much_ev    | 0.0607          | 0.1590          | 0.0017          | 0.0922         
+cancer          | no_ev      | 0.0627          | 0.1194          | 0.0015          | 0.0858         
+cancer          | few_ev     | 0.0633          | 0.1199          | 0.0015          | 0.0858         
+cancer          | much_ev    | 0.0622          | 0.1172          | 0.0015          | 0.0858         
+sachs           | no_ev      | 0.1024          | 4.5953          | 0.0071          | 0.1887         
+sachs           | few_ev     | 0.0991          | 4.2173          | 0.0072          | 0.1887         
+sachs           | much_ev    | 0.0769          | 1.0014          | 0.0074          | 0.1887         
+alarm           | no_ev      | 0.5300          | 17.0061         | 1.0820          | 2.5783         
+alarm           | few_ev     | 0.2442          | 12.3998         | 1.0436          | 2.5783         
+alarm           | much_ev    | 0.1156          | 4.2362          | 1.0463          | 2.5783         
+child           | no_ev      | 0.1042          | 5.0443          | 0.2136          | 0.9974         
+child           | few_ev     | 0.0852          | 2.7218          | 0.1912          | 0.9974         
+child           | much_ev    | 0.0790          | 1.2797          | 0.2176          | 0.9974         
+water           | no_ev      | 3.7983          | 54.3831         | T/O             | T/O            
+water           | few_ev     | 1.6657          | 25.9594         | T/O             | T/O            
+water           | much_ev    | 0.5725          | 5.0167          | T/O             | T/O   
+barley          | no_ev      | T/O             | T/O             | T/O             | T/O            
+barley          | few_ev     | T/O             | T/O             | T/O             | T/O 
+barley          | much_ev    | 168.3987        | T/O             | T/O             | T/O 
+hailfinder      | no_ev      | 6.3969          | 70.9234         | 277.1451        | 42.3287        
+hailfinder      | few_ev     | 2.5365          | 23.5073         | 278.6358        | 42.3287        
+hailfinder      | much_ev    | 0.2256          | 5.5851          | 279.9325        | 42.3287        
+win95pts        | no_ev      | 0.8253          | 19.7732         | 15.4177         | 9.8872         
+win95pts        | few_ev     | 0.3186          | 8.4845          | 15.6620         | 9.8872         
+win95pts        | much_ev    | 0.1369          | 2.4270          | 15.5219         | 9.8872         
+andes           | no_ev      | T/O             | T/O             | T/O             | T/O 
+andes           | few_ev     | 262.5432 (1 TO) | 42.7530         | T/O             | T/O   
+andes           | much_ev    | 0.3470          | 11.7913         | T/O             | T/O
+link            | no_ev      | T/O             | T/O             | T/O             | T/O  
+link            | few_ev     | 43.7727 (4 TO)  | 33.8171         | T/O             | T/O   
+link            | much_ev    | 0.7580          | 5.2297          | T/O             | T/O  
+pathfinder      | no_ev      | T/O             | T/O             | T/O             | T/O  
+pathfinder      | few_ev     | 89.0504         | 250.3634        | T/O             | T/O            
+pathfinder      | much_ev    | 9.8593          | 47.9484         | T/O             | T/O            
+munin2          | no_ev      | T/O             | T/O             | T/O             | T/O 
+munin2          | few_ev     | 37.8664 (4 TO)  | 164.4501        | T/O             | T/O            
+munin2          | much_ev    | 2.9655          | 43.1626         | T/O             | T/O            
+munin           | no_ev      | T/O             | T/O             | T/O             | T/O            
+munin           | few_ev     | 60.3796 (1 TO)  | 250.9380        | T/O             | T/O            
+munin           | much_ev    | 3.6435          | 51.0253         | T/O             | T/O 
+
+
+
+
+
+tm vs reg:
+explain ERR: If you removed the except Exception block, your script would not crash with a MemoryError. It would crash with a structural Python error—most likely a ValueError, IndexError, or KeyError coming from deep inside the pgmpy library.
+
+When the script crashes with one of those errors, the program completely halts. If you were 2 hours into a 3-hour benchmark run, you would lose all your progress just because the Junction Tree algorithm stumbled on a single query.
+
+By catching Exception and logging it as ERR, your script says: "The Junction Tree algorithm mathematically broke and threw an error, but I am going to log it and keep testing the other solvers."
+
+
+==============================================================================================================
+Model           | Tier       | sharpSAT (s)    | Var. Elim (s)   | Junc Tree (s)   | Sampling (s)   
+--------------------------------------------------------------------------------------------------------------
+asia            | no_ev      | 0.0511          | 0.0003          | 0.0068          | 0.0151         
+asia            | few_ev     | 0.0505          | 0.0003          | 0.0068          | 0.0194         
+asia            | much_ev    | 0.0500          | 0.0003          | 0.0067          | 0.0290         
+cancer          | no_ev      | 0.0502          | 0.0002          | 0.0027          | 0.0094         
+cancer          | few_ev     | 0.0506          | 0.0003          | 0.0028          | 0.0110         
+cancer          | much_ev    | 0.0506          | 0.0003          | 0.0030          | 0.0138         
+sachs           | no_ev      | 0.0887          | 0.0005          | ERR             | 0.0220         
+sachs           | few_ev     | 0.0815          | 0.0005          | ERR             | 0.0741         
+sachs           | much_ev    | 0.0623          | 0.0006          | ERR             | 0.3696         
+alarm           | no_ev      | 0.4736          | 0.0005          | MEM_OUT         | 0.0507         
+alarm           | few_ev     | 0.2153          | 0.0010          | ERR             | 1.1121         
+alarm           | much_ev    | 0.1033          | 0.0012          | ERR             | T/O            
+child           | no_ev      | 0.0999          | 0.0003          | 0.0524          | 0.0329         
+child           | few_ev     | 0.0833          | 0.0006          | 0.0535          | 0.8053         
+child           | much_ev    | 0.0720          | 0.0005          | 0.0527          | 16.2739        
+water           | no_ev      | 3.5962          | 0.0005          | MEM_OUT         | 0.0569         
+water           | few_ev     | 1.0987          | 0.0019          | MEM_OUT         | 0.2426         
+water           | much_ev    | 0.4385          | 0.0014          | MEM_OUT         | 8.9017         
+barley          | no_ev      | T/O             | 0.0004          | MEM_OUT         | 0.3903         
+barley          | few_ev     | T/O             | 0.0022          | MEM_OUT         | T/O            
+barley          | much_ev    | T/O             | 0.0020          | MEM_OUT         | T/O            
+hailfinder      | no_ev      | 7.0197          | 0.0005          | MEM_OUT         | 0.0962         
+hailfinder      | few_ev     | 0.5769          | 0.0011          | MEM_OUT         | T/O            
+hailfinder      | much_ev    | 0.1835          | 0.0015          | MEM_OUT         | T/O            
+win95pts        | no_ev      | 0.7870          | 0.0007          | MEM_OUT         | 0.1003         
+win95pts        | few_ev     | 0.2161          | 0.0024          | ERR             | 0.8183         
+win95pts        | much_ev    | 0.1115          | 0.0028          | ERR             | 1.5135          
+andes           | no_ev      | T/O             | 0.0061          | ERR             | 0.3043         
+andes           | few_ev     | 264.2320        | 0.0124          | ERR             | T/O            
+andes           | much_ev    | 0.3179          | 0.0075          | ERR             | T/O            
+link            | no_ev      | T/O             | 0.0004          | ERR             | 1.0616         
+link            | few_ev     | T/O             | 0.4540          | ERR             | MEM_OUT        
+link            | much_ev    | 0.5898          | 0.0192          | ERR             | MEM_OUT        
+pathfinder      | no_ev      | T/O             | 0.0005          | MEM_OUT         | 0.2326         
+pathfinder      | few_ev     | 102.8278        | 0.0013          | MEM_OUT         | T/O            
+pathfinder      | much_ev    | 9.1116          | 0.0021          | MEM_OUT         | T/O            
+munin2          | no_ev      | T/O             | 0.0005          | ERR             | 1.4707         
+munin2          | few_ev     | T/O             | 0.0535          | ERR             | MEM_OUT        
+munin2          | much_ev    | 3.0378          | 0.0624          | ERR             | MEM_OUT  
+
+
+print("VE: " + str(ve_res))
+                print("SS: " + str(ss_res))
+                print("JT: " + str(jt_res))
+                print("AS: " + str(ap_res))
+TM vs REG RERUN:
+=============================================================================================================================
+Model           | Tier       | sharpSAT (s)    | Var. Elim (s)   | Junc Tree (s)   | Sampling (s) [±Err] 
+-----------------------------------------------------------------------------------------------------------------------------
+asia            | no_ev      | 0.0603          | 0.0002          | 0.0075          | 0.0147 (±0.4%)      
+asia            | few_ev     | 0.0584          | 0.0003          | 0.0075          | 0.0229 (±0.1%)      
+asia            | much_ev    | 0.0586          | 0.0003          | 0.0076          | 0.0289 (±0.2%)      
+cancer          | no_ev      | 0.0567          | 0.0003          | 0.0028          | 0.0094 (±0.6%)      
+cancer          | few_ev     | 0.0569          | 0.0003          | 0.0029          | 0.0113 (±0.4%)      
+cancer          | much_ev    | 0.0577          | 0.0003          | 0.0029          | 0.0150 (±0.5%)      
+sachs           | no_ev      | 0.0971          | 0.0003          | ERR             | 0.0223 (±0.5%)      
+sachs           | few_ev     | 0.0938          | 0.0004          | ERR             | 0.0429 (±0.6%)      
+sachs           | much_ev    | 0.0720          | 0.0006          | ERR             | 0.6314 (±0.7%)      
+alarm           | no_ev      | 0.5190          | 0.0005          | MEM_OUT         | 0.0575 (±0.8%)      
+alarm           | few_ev     | 0.2457          | 0.0009          | ERR             | 1.7195 (±0.6%)      
+alarm           | much_ev    | 0.1196          | 0.0011          | ERR             | 17.8017 (1 TO, ±0.4%)
+child           | no_ev      | 0.1076          | 0.0004          | 0.0716          | 0.0339 (±0.6%)      
+child           | few_ev     | 0.0913          | 0.0006          | 0.0712          | 0.7870 (±0.7%)      
+child           | much_ev    | 0.0856          | 0.0006          | 0.0710          | 8.8393 (±1.0%)      
+water           | no_ev      | 3.6909          | 0.0006          | MEM_OUT         | 0.0870 (±1.1%)      
+water           | few_ev     | 1.7500          | 0.0012          | MEM_OUT         | 1.0273 (±0.5%)      
+water           | much_ev    | 0.5535          | 0.0025          | MEM_OUT         | 15.4787 (2 TO, ±0.3%)
+barley          | no_ev      | T/O             | 0.0024          | MEM_OUT         | 0.1802 (±0.5%)    
+barley          | few_ev     | T/O             | 0.0019          | MEM_OUT         | 188.1997 (4 TO, ±1.4%)
+barley          | much_ev    | 99.9885         | 0.0020          | MEM_OUT         | T/O                 
+hailfinder      | no_ev      | 6.9727          | 0.0008          | MEM_OUT         | 0.0994 (±0.9%)      
+hailfinder      | few_ev     | 0.6845          | 0.0015          | MEM_OUT         | 185.7235 (3 TO, ±0.6%)
+hailfinder      | much_ev    | 0.2079          | 0.0013          | MEM_OUT         | T/O                 
+win95pts        | no_ev      | 0.7789          | 0.0004          | MEM_OUT         | 0.1030 (±0.4%)      
+win95pts        | few_ev     | 0.3053          | 0.0010          | MEM_OUT         | 2.4361 (±0.5%)      
+win95pts        | much_ev    | 0.1312          | 0.0019          | MEM_OUT         | 7.2496 (1 TO, ±0.5%)
+andes           | no_ev      | T/O             | 0.0049          | ERR             | 0.3346 (±0.6%)      
+andes           | few_ev     | 117.4380 (3 TO) | 0.0118          | ERR             | T/O                 
+andes           | much_ev    | 0.4760          | 0.0075          | ERR             | T/O                 
+link            | no_ev      | T/O             | 0.0013          | ERR             | 1.1326 (±0.5%)      
+link            | few_ev     | T/O             | 0.0431          | ERR             | MEM_OUT 
+link            | much_ev    | 0.7645          | 0.0497          | ERR             | MEM_OUT 
+pathfinder      | no_ev      | T/O             | 0.0007          | MEM_OUT         | 0.2451 (±0.8%)      
+pathfinder      | few_ev     | 60.8524         | 0.0020          | MEM_OUT         | 89.6705 (1 TO, ±0.0%)
+pathfinder      | much_ev    | 11.1473         | 0.0027          | MEM_OUT         | 34.2832 (4 TO, ±0.0%)
+munin2          | no_ev      | T/O             | 0.0010          | ERR             | 1.5219 (±0.3%)      
+munin2          | few_ev     | 27.0738 (3 TO)  | 0.0656          | ERR             | MEM_OUT             
+munin2          | much_ev    | 3.4235          | 0.0310          | ERR             | MEM_OUT 
+munin           | no_ev      | T/O             | 0.0015          | ERR             | 1.6683 (±0.2%)      
+munin           | few_ev     | 148.2751 (1 TO) | 0.0665          | ERR             | MEM_OUT             
+munin           | much_ev    | 3.6385          | 0.1143          | ERR             | MEM_OUT 
+
+
+
+pruned tournament:
+==========================================================================================
+Model           | Tier       | sharpSAT (s)         | Var. Elimination (s)
+------------------------------------------------------------------------------------------
+asia            | no_ev      | 0.0268               | 0.0009              
+asia            | few_ev     | 0.0246               | 0.0044              
+asia            | much_ev    | 0.0239               | 0.0013              
+asia            | max_tree   | 0.0278               | 0.0016              
+cancer          | no_ev      | 0.0286               | 0.0006              
+cancer          | few_ev     | 0.0310               | 0.0010              
+cancer          | much_ev    | 0.0323               | 0.0054              
+cancer          | max_tree   | 0.0332               | 0.0014              
+sachs           | no_ev      | 0.0357               | 0.0007              
+sachs           | few_ev     | 0.0363               | 0.0010              
+sachs           | much_ev    | 0.0382               | 0.0013              
+sachs           | max_tree   | 0.0508               | 0.0018              
+alarm           | no_ev      | 0.0479               | 0.0008              
+alarm           | few_ev     | 0.0726               | 0.0030              
+alarm           | much_ev    | 0.0574               | 0.0239              
+alarm           | max_tree   | 0.2733               | 0.0080              
+child           | no_ev      | 0.0348               | 0.0008              
+child           | few_ev     | 0.0407               | 0.0016              
+child           | much_ev    | 0.0444               | 0.0023              
+child           | max_tree   | 0.0572               | 0.0031              
+water           | no_ev      | 0.1277               | 0.0018              
+water           | few_ev     | 0.1392               | 0.0035              
+water           | much_ev    | 0.0925               | 0.1415              
+water           | max_tree   | 0.4589               | 0.0854 
+barley          | no_ev      | 0.0231               | 0.0006              
+barley          | few_ev     | T/O                  | 0.2876              
+barley          | much_ev    | 11.4291              | MEM_OUT             
+barley          | max_tree   | T/O                  | 43.2118             
+hailfinder      | no_ev      | 0.0309               | 0.0009              
+hailfinder      | few_ev     | 0.2802               | 0.0044              
+hailfinder      | much_ev    | 0.0697               | MEM_OUT             
+hailfinder      | max_tree   | 1.6149               | 0.8198              
+win95pts        | no_ev      | 0.0309               | 0.0007              
+win95pts        | few_ev     | 0.0423               | 0.0038              
+win95pts        | much_ev    | 0.0541               | MEM_OUT             
+win95pts        | max_tree   | 0.2703               | 0.0127              
+andes           | no_ev      | 0.2313               | 0.0092              
+andes           | few_ev     | 0.1974               | MEM_OUT             
+andes           | much_ev    | 0.0988               | MEM_OUT             
+andes           | max_tree   | T/O                  | 3.6690              
+link            | no_ev      | 0.1188               | 0.0029              
+link            | few_ev     | T/O                  | MEM_OUT             
+link            | much_ev    | 0.1766               | MEM_OUT             
+link            | max_tree   | T/O                  | MEM_OUT             
+pathfinder      | no_ev      | 0.0499               | 0.0010              
+pathfinder      | few_ev     | 1.3037               | MEM_OUT             
+pathfinder      | much_ev    | 0.3117               | MEM_OUT             
+pathfinder      | max_tree   | 0.7052               | MEM_OUT             
+munin2          | no_ev      | 0.0303               | 0.0011              
+munin2          | few_ev     | 48.6229              | MEM_OUT             
+munin2          | much_ev    | 0.5360               | MEM_OUT             
+munin2          | max_tree   | T/O                  | MEM_OUT             
+munin           | no_ev      | 0.0343               | 0.0020              
+munin           | few_ev     | T/O                  | MEM_OUT             
+munin           | much_ev    | 0.5219               | MEM_OUT             
+munin           | max_tree   | T/O                  | MEM_OUT    
+
+
+
+
+pruned rerun:
+==========================================================================================
+Model           | Tier       | sharpSAT (s)         | Var. Elimination (s)
+------------------------------------------------------------------------------------------
+asia            | no_ev      | 0.0340               | 0.0007              
+asia            | few_ev     | 0.0322               | 0.0011              
+asia            | much_ev    | 0.0336               | 0.0013              
+asia            | max_tree   | 0.0357               | 0.0016              
+cancer          | no_ev      | 0.0363               | 0.0006              
+cancer          | few_ev     | 0.0404               | 0.0010              
+cancer          | much_ev    | 0.0416               | 0.0012              
+cancer          | max_tree   | 0.0443               | 0.0013              
+sachs           | no_ev      | 0.0506               | 0.0008              
+sachs           | few_ev     | 0.0541               | 0.0013              
+sachs           | much_ev    | 0.0589               | 0.0015              
+sachs           | max_tree   | 0.0697               | 0.0020              
+alarm           | no_ev      | 0.0653               | 0.0007              
+alarm           | few_ev     | 0.0911               | 0.0029              
+alarm           | much_ev    | 0.0676               | 0.0172              
+alarm           | max_tree   | 0.2734               | 0.0092              
+child           | no_ev      | 0.0485               | 0.0009              
+child           | few_ev     | 0.0529               | 0.0016              
+child           | much_ev    | 0.0584               | 0.0025              
+child           | max_tree   | 0.0718               | 0.0031              
+water           | no_ev      | 0.0729               | 0.0014              
+water           | few_ev     | 0.1619               | 0.0066              
+water           | much_ev    | 0.1359               | 6.0573              
+water           | max_tree   | 0.5036               | 0.1076              
+barley          | no_ev      | 23.4857 (1 TO)       | 0.0021              
+barley          | few_ev     | 2.4467 (4 TO)        | 1.2457 (1 MO)       
+barley          | much_ev    | 6.1701               | MEM_OUT             
+barley          | max_tree   | T/O                  | 44.9864             
+hailfinder      | no_ev      | 0.5396               | 0.0015              
+hailfinder      | few_ev     | 0.2095               | 0.0053              
+hailfinder      | much_ev    | 0.1168               | MEM_OUT             
+hailfinder      | max_tree   | 2.1137               | MEM_OUT             
+win95pts        | no_ev      | 0.0451               | 0.0007              
+win95pts        | few_ev     | 0.0750               | 0.0044              
+win95pts        | much_ev    | 0.0666               | MEM_OUT             
+win95pts        | max_tree   | 0.2760               | 0.0126              
+andes           | no_ev      | 1.0177               | 0.0060              
+andes           | few_ev     | 16.2263              | MEM_OUT             
+andes           | much_ev    | 0.1478               | MEM_OUT             
+andes           | max_tree   | T/O                  | 3.7146              
+link            | no_ev      | 0.0655               | 0.0023              
+link            | few_ev     | 20.1050 (1 TO)       | MEM_OUT             
+link            | much_ev    | 0.1784               | MEM_OUT                      
+link            | max_tree   | T/O                  | MEM_OUT  
+pathfinder      | no_ev      | 0.5789               | 0.0012              
+pathfinder      | few_ev     | 1.8645               | 0.1922 (4 MO)       
+pathfinder      | much_ev    | 1.1479               | MEM_OUT             
+pathfinder      | max_tree   | 0.8164               | MEM_OUT             
+munin2          | no_ev      | 0.0352               | 0.0013              
+munin2          | few_ev     | 9.5760               | MEM_OUT             
+munin2          | much_ev    | 0.5541               | MEM_OUT             
+munin2          | max_tree   | T/O                  | MEM_OUT             
+munin           | no_ev      | 0.0876               | 0.0029              
+munin           | few_ev     | 1.8244               | MEM_OUT             
+munin           | much_ev    | 0.7004               | MEM_OUT             
+munin           | max_tree   | T/O                  | MEM_OUT      
+
+
+MPE SOLVERS:
+================================================================================
+Model           | Tier       | RC2 (PySAT) (s)      | UWrMaxSat (C++) (s) 
+--------------------------------------------------------------------------------
+asia            | no_ev      | 0.0025               | 0.0189              
+asia            | few_ev     | 0.0023               | 0.0188              
+asia            | much_ev    | 0.0021               | 0.0199              
+cancer          | no_ev      | 0.0020               | 0.0206              
+cancer          | few_ev     | 0.0021               | 0.0212              
+cancer          | much_ev    | 0.0020               | 0.0223              
+sachs           | no_ev      | 0.0113               | 0.0419              
+sachs           | few_ev     | 0.0115               | 0.0382              
+sachs           | much_ev    | 0.0063               | 0.0337              
+alarm           | no_ev      | 0.0168               | 0.0560              
+alarm           | few_ev     | 0.0172               | 0.0511              
+alarm           | much_ev    | 0.2526               | 0.0443              
+child           | no_ev      | 0.0188               | 0.0483              
+child           | few_ev     | 0.0099               | 0.0401              
+child           | much_ev    | 0.0088               | 0.0372              
+water           | no_ev      | 2.1294               | 0.3541              
+water           | few_ev     | 0.1998               | 0.2823              
+water           | much_ev    | 0.1862               | 0.2306 
+barley          | no_ev      | MEM_OUT              | T/O                 
+barley          | few_ev     | MEM_OUT              | T/O                 
+barley          | much_ev    | MEM_OUT              | 8.2810 
+hailfinder      | no_ev      | MEM_OUT              | 0.7989              
+hailfinder      | few_ev     | MEM_OUT              | 0.8398              
+hailfinder      | much_ev    | MEM_OUT              | 0.1358              
+win95pts        | no_ev      | 0.0188               | 0.0535              
+win95pts        | few_ev     | 0.0193               | 0.0458              
+win95pts        | much_ev    | 0.0183               | 0.0444              
+andes           | no_ev      | 0.3299               | 0.2000              
+andes           | few_ev     | 0.3284               | 0.2102              
+andes           | much_ev    | 0.0553               | 0.1206              
+link            | no_ev      | 0.2330               | 0.3680              
+link            | few_ev     | 0.1843               | 0.4715              
+link            | much_ev    | 0.2152               | 0.2557              
+pathfinder      | no_ev      | 10.7642              | 298.5210            
+pathfinder      | few_ev     | 2.9497               | 36.9170             
+pathfinder      | much_ev    | 1.6804               | 9.2692              
+munin2          | no_ev      | MEM_OUT              | 27.3039             
+munin2          | few_ev     | MEM_OUT              | 6.1787              
+munin2          | much_ev    | MEM_OUT              | 2.0093              
+munin           | no_ev      | MEM_OUT              | T/O                 
+munin           | few_ev     | MEM_OUT              | 7.1709              
+munin           | much_ev    | 1.2947               | 2.5175  
+================================================================================
+
+MPE SOLVERS RERUN:
+================================================================================
+Model           | Tier       | RC2 (PySAT) (s)      | UWrMaxSat (C++) (s) 
+--------------------------------------------------------------------------------
+asia            | no_ev      | 0.0050               | 0.0221              
+asia            | few_ev     | 0.0023               | 0.0247              
+asia            | much_ev    | 0.0020               | 0.0252              
+cancer          | no_ev      | 0.0020               | 0.0272              
+cancer          | few_ev     | 0.0019               | 0.0283              
+cancer          | much_ev    | 0.0018               | 0.0305              
+sachs           | no_ev      | 0.0100               | 0.0491              
+sachs           | few_ev     | 0.0095               | 0.0519              
+sachs           | much_ev    | 0.0067               | 0.0514              
+alarm           | no_ev      | 0.1873               | 0.0697              
+alarm           | few_ev     | 0.0148               | 0.0516              
+alarm           | much_ev    | 0.0128               | 0.0457              
+child           | no_ev      | 0.0814               | 0.0487              
+child           | few_ev     | 0.1263               | 0.0479              
+child           | much_ev    | 0.0134               | 0.0406              
+water           | no_ev      | 2.0009               | 0.3442              
+water           | few_ev     | 0.7300               | 0.2861              
+water           | much_ev    | 0.1749               | 0.2390 
+barley          | no_ev      | MEM_OUT              | T/O
+barley          | few_ev     | MEM_OUT              | 176.3102 (1 TO) 
+barley          | much_ev    | MEM_OUT              | 11.9139 (1 TO) 
+hailfinder      | no_ev      | MEM_OUT              | 0.8123
+hailfinder      | few_ev     | MEM_OUT              | 0.3675
+hailfinder      | much_ev    | 16.0431 (1 TO)       | 0.1780
+win95pts        | no_ev      | 0.0200               | 0.0568
+win95pts        | few_ev     | 0.0199               | 0.0544 
+win95pts        | much_ev    | 0.0186               | 0.0516
+andes           | no_ev      | MEM_OUT              | 0.2183 
+andes           | few_ev     | MEM_OUT              | 0.2349
+andes           | much_ev    | 0.0573               | 0.1321 
+link            | no_ev      | 0.2233               | 0.4052  
+link            | few_ev     | 0.1894               | 0.5000
+link            | much_ev    | 0.1809               | 0.2777 
+pathfinder      | no_ev      | 10.6884              | 299.1136 (3 TO)  
+pathfinder      | few_ev     | 3.1049               | 38.2428
+pathfinder      | much_ev    | 1.3304               | 3.0530   
+munin2          | no_ev      | MEM_OUT              | 28.4566
+munin2          | few_ev     | 1.9554               | 6.3106 
+munin2          | much_ev    | 1.1177               | 1.9952 
+munin           | no_ev      | MEM_OUT              | T/O   
+munin           | few_ev     | MEM_OUT              | 8.4389 
+munin           | much_ev    | 1.4048               | 2.4487
+
+
+
+
+MPE VS REG old:
+===============================================================================================
+Model           | Tier       | UWrMaxSat (s)   | Var. Elim (s)   | Hill Climb (s) 
+-----------------------------------------------------------------------------------------------
+asia            | no_ev      | 0.0201          | 0.0024          | INV            
+asia            | few_ev     | 0.0214          | 0.0024          | 0.0001         
+asia            | much_ev    | 0.0228          | 0.0025          | INV            
+cancer          | no_ev      | 0.0240          | 0.0018          | 0.0001         
+cancer          | few_ev     | 0.0257          | 0.0019          | 0.0000         
+cancer          | much_ev    | 0.0267          | 0.0018          | 0.0001         
+sachs           | no_ev      | 0.0503          | 0.0071          | 0.0002         
+sachs           | few_ev     | 0.0470          | 0.0044          | 0.0003         
+sachs           | much_ev    | 0.0438          | 0.0035          | 0.0002         
+alarm           | no_ev      | 0.0668          | MEM_OUT         | INV            
+alarm           | few_ev     | 0.0673          | MEM_OUT         | INV            
+alarm           | much_ev    | 0.0608          | MEM_OUT         | INV            
+child           | no_ev      | 0.0729          | MEM_OUT         | 0.0003         
+child           | few_ev     | 0.0697          | MEM_OUT         | INV            
+child           | much_ev    | 0.0617          | 0.0083          | 0.0003         
+water           | no_ev      | 0.3811          | MEM_OUT         | INV            
+water           | few_ev     | 0.3129          | MEM_OUT         | INV            
+water           | much_ev    | 0.2415          | MEM_OUT         | INV            
+barley          | no_ev      | T/O             | MEM_OUT         | 0.0059         
+barley          | few_ev     | T/O             | MEM_OUT         | 0.0069         
+barley          | much_ev    | 9.1802          | MEM_OUT         | 0.0018         
+hailfinder      | no_ev      | 0.8344          | MEM_OUT         | INV            
+hailfinder      | few_ev     | 0.3106          | MEM_OUT         | INV            
+hailfinder      | much_ev    | 0.1695          | MEM_OUT         | INV            
+win95pts        | no_ev      | 0.0505          | MEM_OUT         | INV            
+win95pts        | few_ev     | 0.0549          | MEM_OUT         | INV            
+win95pts        | much_ev    | 0.0487          | MEM_OUT         | INV            
+andes           | no_ev      | 0.2168          | MEM_OUT         | INV            
+andes           | few_ev     | 0.2487          | MEM_OUT         | INV            
+andes           | much_ev    | 0.1385          | MEM_OUT         | INV            
+link            | no_ev      | 0.4179          | MEM_OUT         | INV            
+link            | few_ev     | 0.4693          | MEM_OUT         | INV            
+link            | much_ev    | 0.2618          | MEM_OUT         | INV            
+pathfinder      | no_ev      | T/O             | MEM_OUT         | INV            
+pathfinder      | few_ev     | 53.4994         | MEM_OUT         | INV            
+pathfinder      | much_ev    | 2.5065          | MEM_OUT         | INV            
+munin2          | no_ev      | 28.6168         | MEM_OUT         | INV            
+munin2          | few_ev     | 7.1171          | MEM_OUT         | INV            
+munin2          | much_ev    | 2.1582          | MEM_OUT         | INV            
+munin           | no_ev      | T/O             | MEM_OUT         | INV            
+munin           | few_ev     | 9.0276          | MEM_OUT         | INV            
+munin           | much_ev    | 2.7293          | MEM_OUT         | INV 
+
+
+MPE vs REG RERUN:
+===============================================================================================
+Model           | Tier       | UWrMaxSat (s)   | Var. Elim (s)   | Hill Climb (s) 
+-----------------------------------------------------------------------------------------------
+asia            | no_ev      | 0.0216          | 0.0021          | 0.0190         
+asia            | few_ev     | 0.0236          | 0.0021          | 0.0159         
+asia            | much_ev    | 0.0261          | 0.0022          | 0.0101         
+cancer          | no_ev      | 0.0295          | 0.0017          | 0.0090         
+cancer          | few_ev     | 0.0314          | 0.0017          | 0.0064         
+cancer          | much_ev    | 0.0320          | 0.0016          | 0.0042         
+sachs           | no_ev      | 0.0504          | 0.0049          | 0.1499         
+sachs           | few_ev     | 0.0507          | 0.0036          | 0.1313         
+sachs           | much_ev    | 0.0502          | 0.0029          | 0.0719         
+alarm           | no_ev      | 0.0719          | MEM_OUT         | 3.8469         
+alarm           | few_ev     | 0.0730          | MEM_OUT         | 3.1938         
+alarm           | much_ev    | 0.0696          | MEM_OUT         | 1.9679         
+child           | no_ev      | 0.0794          | MEM_OUT         | 0.7241         
+child           | few_ev     | 0.0859          | 0.4518 (4 MO)   | 0.5963         
+child           | much_ev    | 0.0763          | 0.0082          | 0.3408 
+water           | no_ev      | 0.3453          | MEM_OUT         | INV            
+water           | few_ev     | 0.2857          | MEM_OUT         | INV            
+water           | much_ev    | 0.2163          | MEM_OUT         | INV            
+barley          | no_ev      | T/O             | MEM_OUT         | 55.9108  
+barley          | few_ev     | 179.3851 (3 TO) | MEM_OUT         | 42.8350 (2/2 MM)
+barley          | much_ev    | 12.0932         | MEM_OUT         | 25.0872 (5/5 MM)
+hailfinder      | no_ev      | 0.7507          | MEM_OUT         | 0.4588 (4 INV, 1 MM)
+hailfinder      | few_ev     | 0.3399          | MEM_OUT         | INV      
+hailfinder      | much_ev    | 0.1733          | MEM_OUT         | 0.1828 (4 INV, 1 MM)
+win95pts        | no_ev      | 0.0532          | MEM_OUT         | INV     
+win95pts        | few_ev     | 0.0543          | MEM_OUT         | 0.2905 (4 INV, 1 MM)
+win95pts        | much_ev    | 0.0517          | MEM_OUT         | 0.1605 (3 INV, 2 MM)
+andes           | no_ev      | 0.2034          | MEM_OUT         | INV
+andes           | few_ev     | 0.2178          | MEM_OUT         | INV            
+andes           | much_ev    | 0.1361          | MEM_OUT         | 25.7687 (3 INV, 2 MM)
+link            | no_ev      | 0.3785          | MEM_OUT         | INV            
+link            | few_ev     | 0.4693          | MEM_OUT         | INV            
+link            | much_ev    | 0.2643          | MEM_OUT         | INV            
+munin2          | no_ev      | 25.3630         | MEM_OUT         | INV   
+munin2          | few_ev     | 6.1692          | MEM_OUT         | INV            
+munin2          | much_ev    | 2.0238          | MEM_OUT         | INV            
+munin           | no_ev      | T/O             | MEM_OUT         | INV            
+munin           | few_ev     | 7.6482          | MEM_OUT         | INV            
+munin           | much_ev    | 2.4417          | MEM_OUT         | INV            
+pathfinder      | no_ev      | 290.2947        | MEM_OUT         | INV  
+pathfinder      | few_ev     | 44.1884         | MEM_OUT         | INV            
+pathfinder      | much_ev    | 2.3807          | MEM_OUT         | INV            
+
+
+
+
+
+MAP old:
+===============================================================================================
+Model           | Tier            | Ganak-Spam (s)  | DPMC (s)        | Var. Elim (s)  
+-----------------------------------------------------------------------------------------------
+asia            | fewM_fewE       | 0.1780          | 0.0747          | 0.0031         
+asia            | fewM_muchE      | 0.1691          | 0.0727          | 0.0029         
+asia            | muchM_fewE      | 0.6763          | 0.0719          | 0.0031         
+asia            | muchM_muchE     | 0.6876          | 0.0764          | 0.0034         
+cancer          | fewM_fewE       | 0.1868          | 0.0748          | 0.0022         
+cancer          | fewM_muchE      | 0.1886          | 0.0753          | 0.0026         
+cancer          | muchM_fewE      | 0.7548          | 0.0786          | 0.0024         
+cancer          | muchM_muchE     | 0.7678          | 0.0785          | 0.0025         
+sachs           | fewM_fewE       | 7.0436          | 0.0916          | 0.0029         
+sachs           | fewM_muchE      | 0.5053          | 0.0933          | 0.0035         
+sachs           | muchM_fewE      | 26.2822         | 0.0973          | 0.0031         
+sachs           | muchM_muchE     | 4.8786          | 0.1023          | 0.0038         
+alarm           | fewM_fewE       | 15.7849         | 0.1224          | 0.0069         
+alarm           | fewM_muchE      | 15.8365         | 0.1446          | 0.0268         
+alarm           | muchM_fewE      | T/O             | 0.1612          | 0.0103         
+alarm           | muchM_muchE     | T/O             | 0.1964          | 0.0229         
+child           | fewM_fewE       | 1.8926          | 0.0865          | 0.0034         
+child           | fewM_muchE      | 3.3602          | 0.1021          | 0.0049         
+child           | muchM_fewE      | 4.9373          | 0.1687          | 0.0036         
+child           | muchM_muchE     | 17.3527         | 0.1084          | 0.0056 
+water           | fewM_fewE       | 10.4112         | 16.6299         | 0.4459         
+water           | fewM_muchE      | 6.1285          | 25.4202         | 0.2756         
+water           | muchM_fewE      | 61.4484         | 63.3697         | 0.9667         
+water           | muchM_muchE     | 38.9919         | 139.1846        | 0.4160         
+barley          | fewM_fewE       | T/O             | T/O             | MEM_OUT  
+barley          | fewM_muchE      | T/O             | T/O             | MEM_OUT  
+barley          | muchM_fewE      | T/O             | T/O             | MEM_OUT  
+barley          | muchM_muchE     | T/O             | T/O             | MEM_OUT  
+hailfinder      | fewM_fewE       | 102.9864        | 1.7057          | 0.0105         
+hailfinder      | fewM_muchE      | 28.4617         | 16.4273         | MEM_OUT        
+hailfinder      | muchM_fewE      | T/O             | 47.3291         | 2.3047         
+hailfinder      | muchM_muchE     | T/O             | 84.3966         | MEM_OUT        
+win95pts        | fewM_fewE       | 4.8763          | 0.1222          | 0.0103         
+win95pts        | fewM_muchE      | 1.7667          | 0.1500          | MEM_OUT        
+win95pts        | muchM_fewE      | 57.3567         | 0.1255          | 0.0109         
+win95pts        | muchM_muchE     | 26.7574         | 0.1677          | MEM_OUT        
+andes           | fewM_fewE       | 69.9448         | 6.6952          | MEM_OUT        
+andes           | fewM_muchE      | 27.8551         | 1.5484          | MEM_OUT        
+andes           | muchM_fewE      | T/O             | 13.1544         | MEM_OUT        
+andes           | muchM_muchE     | T/O             | 40.2293         | MEM_OUT        
+link            | fewM_fewE       | T/O             | T/O             | MEM_OUT        
+link            | fewM_muchE      | 11.1324         | 17.5618         | MEM_OUT        
+link            | muchM_fewE      | T/O             | T/O             | MEM_OUT        
+link            | muchM_muchE     | T/O             | T/O             | MEM_OUT 
+pathfinder      | fewM_fewE       | T/O             | T/O             | MEM_OUT        
+pathfinder      | fewM_muchE      | 47.5431         | T/O             | MEM_OUT 
+pathfinder      | muchM_fewE      | T/O             | T/O             | MEM_OUT        
+pathfinder      | muchM_muchE     | T/O             | T/O             | MEM_OUT
+munin2          | fewM_fewE       | T/O             | 154.1187        | MEM_OUT      
+munin2          | fewM_muchE      | T/O             | 32.9308         | MEM_OUT        
+munin2          | muchM_fewE      | T/O             | T/O             | MEM_OUT       
+munin2          | muchM_muchE     | T/O             | T/O             | MEM_OUT       
+
+
+
+MAP RERUN:
+===============================================================================================
+Model           | Tier            | Ganak-Spam (s)  | DPMC (s)        | Var. Elim (s)  
+-----------------------------------------------------------------------------------------------
+asia            | fewM_fewE       | 0.1834          | 0.0748          | 0.0030         
+asia            | fewM_muchE      | 0.1797          | 0.0714          | 0.0030         
+asia            | muchM_fewE      | 0.7182          | 0.0759          | 0.0029         
+asia            | muchM_muchE     | 0.7417          | 0.0807          | 0.0034         
+cancer          | fewM_fewE       | 0.2024          | 0.0792          | 0.0023         
+cancer          | fewM_muchE      | 0.2068          | 0.0801          | 0.0024         
+cancer          | muchM_fewE      | 0.8459          | 0.0824          | 0.0025         
+cancer          | muchM_muchE     | 0.8714          | 0.0858          | 0.0025         
+sachs           | fewM_fewE       | 8.3395          | 0.0976          | 0.0033         
+sachs           | fewM_muchE      | 2.0143          | 0.1018          | 0.0034         
+sachs           | muchM_fewE      | 38.3548         | 0.1112          | 0.0035         
+sachs           | muchM_muchE     | 5.6485          | 0.1129          | 0.0039         
+alarm           | fewM_fewE       | 26.6711         | 0.1222          | 0.0088         
+alarm           | fewM_muchE      | 10.5801         | 0.1279          | 0.0243         
+alarm           | muchM_fewE      | 157.3874 (2 TO) | 0.2177          | 0.0092         
+alarm           | muchM_muchE     | 101.3631 (1 TO) | 0.2548          | 0.0214         
+child           | fewM_fewE       | 6.8319          | 0.0992          | 0.0043         
+child           | fewM_muchE      | 6.0924          | 0.1077          | 0.0057         
+child           | muchM_fewE      | 61.3588         | 0.1830          | 0.0052         
+child           | muchM_muchE     | 24.9272         | 0.1152          | 0.0057         
+water           | fewM_fewE       | 9.9118          | 8.1533          | 0.1806         
+water           | fewM_muchE      | 3.7778          | 27.2304 (1 TO)  | 0.3737
+water           | muchM_fewE      | 61.2913         | 27.4039         | 1.8512         
+water           | muchM_muchE     | 41.9621         | 71.6464 (2 TO)  | 1.5497         
+barley          | fewM_fewE       | T/O             | 53.6582 (4 TO)  | 1.1557 (2 MO)  
+barley          | fewM_muchE      | T/O             | T/O             | MEM_OUT        
+barley          | muchM_fewE      | T/O             | 84.4924 (4 TO)  | 1.6215 (3 MO)  
+barley          | muchM_muchE     | T/O             | T/O             | MEM_OUT        
+hailfinder      | fewM_fewE       | 157.7028 (2 TO) | 32.9722         | 0.0839         
+hailfinder      | fewM_muchE      | 59.1246         | 89.3839         | MEM_OUT        
+hailfinder      | muchM_fewE      | T/O             | 9.9103 (3 TO)   | 0.1874         
+hailfinder      | muchM_muchE     | T/O             | 25.9340 (2 TO)  | MEM_OUT        
+win95pts        | fewM_fewE       | 11.2615         | 0.1463          | 0.0133         
+win95pts        | fewM_muchE      | 1.8123          | 0.1514          | MEM_OUT        
+win95pts        | muchM_fewE      | 158.6017        | 0.1459          | 0.0154         
+win95pts        | muchM_muchE     | 16.2576         | 0.1797          | MEM_OUT   
+andes           | fewM_fewE       | 64.0927         | 2.0757          | MEM_OUT        
+andes           | fewM_muchE      | 30.3589         | 7.2545          | MEM_OUT        
+andes           | muchM_fewE      | T/O             | 22.9142         | MEM_OUT        
+andes           | muchM_muchE     | T/O             | 41.6754         | MEM_OUT        
+link            | fewM_fewE       | 41.0586         | 123.7915 (3 TO) | MEM_OUT        
+link            | fewM_muchE      | 5.5356          | 1.7961 (1 TO)   | MEM_OUT        
+link            | muchM_fewE      | T/O             | 34.2202 (3 TO)  | MEM_OUT 
+link            | muchM_muchE     | T/O             | T/O             | MEM_OUT     
+munin2          | fewM_fewE       | 100.7380 (1 TO) | 114.1418 (3 TO) | MEM_OUT        
+munin2          | fewM_muchE      | 66.9062         | 64.1954 (1 TO)  | MEM_OUT      
+munin2          | muchM_fewE      | T/O             | 138.7965 (2 TO) | MEM_OUT 
+munin2          | muchM_muchE     | T/O             | 77.2906 (1 TO)  | MEM_OUT  
+munin           | fewM_fewE       | 159.6560        | 91.2913         | MEM_OUT        
+munin           | fewM_muchE      | 31.1259         | 145.3872 (2 TO) | MEM_OUT      
+munin           | muchM_fewE      | T/O             | 96.9087 (4 TO)  | MEM_OUT 
+munin           | muchM_muchE     | T/O             | 161.3651 (2 TO) | MEM_OUT  
+pathfinder      | fewM_fewE       | 46.7812         | T/O             | MEM_OUT 
+pathfinder      | fewM_muchE      | 58.7025 (2 TO)  | T/O             | MEM_OUT
+pathfinder      | muchM_fewE      | T/O             | T/O             | MEM_OUT
+pathfinder      | muchM_muchE     | T/O             | T/O             | MEM_OUT   
+
+
+
+scalability network: 
+================================================================================
+Network Attribute         | Parameter Value | sharpSAT Time (s)  | Clauses
+================================================================================
+Total Nodes               | 10              | 0.0064             | 232
+Total Nodes               | 20              | 0.0095             | 500
+Total Nodes               | 50              | 0.0881             | 1556
+Total Nodes               | 70              | 0.4826             | 2208
+Total Nodes               | 90              | 34.9750            | 2892
+Total Nodes               | 100             | 55.5572            | 3200
+Total Nodes               | 105             | 230.3759           | 3398
+Total Nodes               | 110             | TIMEOUT            | 3664
+--------------------------------------------------------------------------------
+Max Parents (Density)     | 1               | 0.0078             | 412
+Max Parents (Density)     | 2               | 0.0175             | 932
+Max Parents (Density)     | 3               | 0.0836             | 2260
+Max Parents (Density)     | 4               | 0.7271             | 4956
+Max Parents (Density)     | 5               | 2.7777             | 11144
+Max Parents (Density)     | 6               | 3.5884             | 23468
+Max Parents (Density)     | 7               | 19.3003            | 50032
+Max Parents (Density)     | 8               | 100.2304           | 110768
+Max Parents (Density)     | 9               | 290.8656           | 208164
+Max Parents (Density)     | 10              | TIMEOUT            | 460828
+--------------------------------------------------------------------------------
+States per Node           | 2               | 0.0166             | 868
+States per Node           | 3               | 0.0780             | 2688
+States per Node           | 4               | 5.4603             | 6562
+States per Node           | 5               | 15.1316            | 12585
+States per Node           | 6               | 29.8131            | 22332
+States per Node           | 7               | TIMEOUT            | 35429
+States per Node           | 8               | TIMEOUT            | 44902
+States per Node           | 9               | TIMEOUT            | 71427
+================================================================================
+
+
+
+
+
+def get_tier_display(times, statuses):
+    valid_times = [t for t, s in zip(times, statuses) if s == "SUCCESS"]
+    
+    # Count the failures
+    mem_outs = statuses.count("MEM_OUT")
+    timeouts = statuses.count("T/O")
+    errs = statuses.count("ERR")
+    
+    if not valid_times:
+        if mem_outs > 0: return "MEM_OUT"
+        if timeouts > 0: return "T/O"
+        return "ERR"
+        
+    avg = sum(valid_times) / len(valid_times)
+    
+    # If there are a mix of successes and failures, show the average AND the failure count
+    if mem_outs > 0:
+        return f"{avg:.4f} ({mem_outs} MO)"
+    if timeouts > 0:
+        return f"{avg:.4f} ({timeouts} TO)"
+        
+    return f"{avg:.4f}"
+

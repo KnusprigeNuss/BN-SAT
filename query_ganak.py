@@ -1,9 +1,18 @@
 import subprocess
 import os
 import json
+import resource
 
 GANAK_PATH = os.path.abspath("./solvers_bin/ganak") 
 BASE_DIR = "temp_res"
+
+def limit_memory():
+    try:
+        limit = 8 * 1024 * 1024 * 1024
+        resource.setrlimit(resource.RLIMIT_AS, (limit, limit))
+    except ValueError:
+        pass
+
 
 def create_wcnf_file(output_name, extra_clauses, m_name):
     with open(f"{BASE_DIR}/{m_name}.cnf", 'r') as f:
@@ -53,7 +62,7 @@ def run_wmc(file_name):
     
     cmd = [GANAK_PATH, "--mode", "1", abs_file_path]
     
-    result = subprocess.run(cmd, capture_output=True, text=True)
+    result = subprocess.run(cmd, capture_output=True, text=True, timeout=300, preexec_fn=limit_memory)
 
     for line in result.stdout.split('\n'):
         if "exact quadruple float" in line:
@@ -62,7 +71,7 @@ def run_wmc(file_name):
 
 
 def query_probability_ganak(evidence_dict, query_node, query_state, mapping, m_name):
-    print(f"Ganak Query: P({query_node}={query_state} | {evidence_dict})")
+    # print(f"Ganak Query: P({query_node}={query_state} | {evidence_dict})")
     
     evidence_vars = [mapping[node][state] for node, state in evidence_dict.items()]
     query_var = mapping[query_node][query_state]
@@ -76,7 +85,7 @@ def query_probability_ganak(evidence_dict, query_node, query_state, mapping, m_n
     if denom is not None and num is not None:
         if denom == 0: return 0.0
         prob = (num / denom) * 100
-        print(f"Ganak Result: {prob:.2f}%\n")
+        # print(f"Ganak Result: {prob:.2f}%\n")
         return prob
     return None
 
